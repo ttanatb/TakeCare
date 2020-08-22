@@ -15,6 +15,9 @@ public class CharacterMovement : MonoBehaviour
 
     Transform cameraTransform_ = null;
 
+    [SerializeField]
+    private PlayerTalkCoordinator playerTalkCoordinator = null;
+
     public Transform CameraTransform
     {
         set { cameraTransform_ = value; }
@@ -26,6 +29,9 @@ public class CharacterMovement : MonoBehaviour
     {
         if (cameraTransform_ == null)
             cameraTransform_ = Camera.main.transform;
+
+        if (playerTalkCoordinator == null)
+            playerTalkCoordinator = GetComponent<PlayerTalkCoordinator>();
     }
 
     // Update is called once per frame
@@ -36,6 +42,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdatePositionFromInput()
     {
+        // Disable movement if in dialogue.
+        if (playerTalkCoordinator.State == PlayerTalkCoordinator.PlayerDialogueState.InDialogue)
+            return;
+
         // Get Axes
         float horizontalMovement = Input.GetAxis(HORIZONTAL_AXIS);
         float verticalMovement = Input.GetAxis(VERTICAL_AXIS);

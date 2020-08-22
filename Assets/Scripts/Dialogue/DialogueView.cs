@@ -1,151 +1,212 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class DialogueView : MonoBehaviour
 {
     [SerializeField]
-    TextMeshProUGUI nameText_;
+    TextMeshProUGUI nameText_ = null;
 
     [SerializeField]
-    TextMeshProUGUI dialogueText_;
+    TextMeshProUGUI dialogueText_ = null;
 
     [SerializeField]
-    AudioSource tickAudioSource_;
+    AudioSource tickAudioSource_ = null;
 
     [SerializeField]
-    float baseVolume_ = 1.0f;
-    [SerializeField]
-    float volumeVariance_ = 0.1f;
-    [SerializeField]
-    float basePitch_ = 1.0f;
-    [SerializeField]
-    float pitchVariance_ = 0.1f;
+    DialogueOptionView dialogueOptionView_ = null;
 
-    [SerializeField]
-    AudioClip tickAudioClip_;
-
-    private const float DEFAULT_SCROLL_SPEED = 12.5f;
     private HashSet<char> charsToIgnoreForTicks = new HashSet<char>();
 
-    enum State
+    bool ignoreNextInput_ = false;
+
+    [SerializeField]
+    private Image[] renderers_;
+
+    public enum State
     {
-        Invalid = 0,
+        Initial = 0,
         Scrolling = 1,
         Waiting = 2,
-        End = 3,
+        WaitingForOptionSelection = 3,
+        End = 4,
     }
 
     private State state_;
     private int dialogueIndex_ = 0;
     private int subStringLength_ = 0;
     private float timer_ = 0.0f;
-    private float scrollIntervalSec_ = 1.0f / DEFAULT_SCROLL_SPEED;
+    private float scrollIntervalSec_ = 0.0f;
+
+    public State CurrentState { get { return state_; } }
 
     // Model
-    private string[] dialogues_;
-    private UnityEvent completedEvent_;
+    [SerializeField]
+    DialogueModel model_;
 
-    public string Name
+    private List<Func<bool>> dialogueCompletedCbs_;
+
+    public DialogueModel Model
     {
-        get { return nameText_.text; }
-        set { nameText_.text = value; }
+        get { return model_; }
+        set
+        {
+            model_ = value;
+            state_ = State.Initial;
+            dialogueIndex_ = 0;
+            ClearText();
+            scrollIntervalSec_ = 1.0f / value.Speed;
+            nameText_.text = value.Name;
+        }
     }
 
-    public string[] Dialogue
+    public List<Func<bool>> DialogueCompletedCbs
     {
-        get { return dialogues_; }
-        set { dialogues_ = value; }
+        get { return dialogueCompletedCbs_; }
+        set { dialogueCompletedCbs_ = value; }
     }
 
-    public UnityEvent CompletedEvent
+    FlagManager flagManager_;
+
+    private void Awake()
     {
-        get { return completedEvent_; }
-        set { completedEvent_ = value; }
+        if (renderers_ == null || renderers_.Length == 0)
+            renderers_ = GetComponentsInChildren<Image>();
+
+        char[] charsToIgnore = { ',', '.', ' ', '\n', '!', '-' };
+        foreach (char c in charsToIgnore)
+            charsToIgnoreForTicks.Add(c);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        char[] charsToIgnore = { ',', '.', ' ', '\n', '!', };
-        foreach (char c in charsToIgnore)
-            charsToIgnoreForTicks.Add(c);
+        flagManager_ = FlagManager.Instance;
+        dialogueOptionView_.OptionSelectedCb = () =>
+        {
+            if (state_ != State.WaitingForOptionSelection)
+            {
+                Debug.LogWarning("OptionSelectedCb called when DialogueView isn't waiting for input?");
+                return false;
+            }
 
-
-        // TESTING
-        Name = "TestNAME";
-        string[] testDialogue = {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt, diam eget bibendum aliquet, erat ligula placerat sapien, nec gravida odio lacus non magna. Aenean at libero sit amet lectus posuere pretium vitae sit amet massa. Vivamus id odio neque. Phasellus non luctus diam, non rutrum lectus. Suspendisse eget neque sed felis rhoncus efficitur. Praesent sem lorem, fermentum sit amet purus a, mollis dignissim risus.",
-            "Praesent id tortor vitae nisi iaculis condimentum ege",
-            "ltricies......... Donec faucibus metu",
+            GoToNext();
+            return true;
         };
-        Dialogue = testDialogue;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            StartDialogueScroll();
-
-        if (Input.GetKeyDown(KeyCode.R))
-            Next();
-
-        if (Input.GetKeyDown(KeyCode.T))
-            SkipToEnd();
+        if (ignoreNextInput_)
+            ignoreNextInput_ = false;
 
         switch (state_)
         {
-            case State.Invalid:
-                break;
             case State.Scrolling:
                 ScrollText();
                 break;
-            case State.Waiting:
+            default:
                 break;
         }
     }
 
 
     // Starts the text scrolling.
-    public void StartDialogueScroll()
+    public bool StartDialogueScroll()
     {
+        // Check if flags are met for dialogue.
+        if (!flagManager_.GetFlagCompletion(model_.Dialogue[dialogueIndex_].PrereqFlag) ||
+            !flagManager_.GetFlagUnmet(model_.Dialogue[dialogueIndex_].PrereqUnmetFlags))
+        {
+            GoToNext();
+        }
+
+        //Debug.Log("Attempgint to start dialogue scroll");
+        if (ignoreNextInput_)
+        {
+            //Debug.Log("Can't scroll dialogue, just completed something.");
+            return false;
+        }
+
         state_ = State.Scrolling;
+        ignoreNextInput_ = true;
+        //Debug.Log("Scrolling dialogue now.");
+        return true;
     }
 
     // Shows next dialogue.
-    public void Next()
+    public void SkipToEndOrGoToNext()
+    {
+        //Debug.Log("SkipToEndOrGoToNext");
+        if (ignoreNextInput_)
+        {
+            //Debug.Log("SkipToEndOrGoToNext ignored");
+            return;
+        }
+        // Skip to end of scrolling
+        if (state_ == State.Scrolling)
+        {
+            dialogueText_.text = model_.Dialogue[dialogueIndex_].Text;
+            subStringLength_ = model_.Dialogue[dialogueIndex_].Text.Length;
+            timer_ = 0.0f;
+            ShowOptionsIfExist();
+            ignoreNextInput_ = true;
+            //Debug.Log("Skipped to end, ignoring next input.");
+        }
+        else if (state_ == State.Waiting)
+        {
+            GoToNext();
+        }
+    }
+
+    public void GoToNext()
     {
         // Clear view for next dialogue.
         dialogueIndex_++;
-        dialogueText_.text = "";
-        state_ = State.Scrolling;
-        timer_ = 0.0f;
-        subStringLength_ = 0;
+        ClearText();
 
         // If at the dialogue.
-        if (dialogueIndex_ >= dialogues_.Length)
+        //Debug.Log("Curr dialogue index: " + dialogueIndex_);
+        if (dialogueIndex_ >= model_.Dialogue.Length)
         {
+            //Debug.Log("End state!");
             state_ = State.End;
-            if (completedEvent_ != null)
-                completedEvent_.Invoke();
+            if (dialogueCompletedCbs_ != null)
+            {
+                foreach (Func<bool> cb in dialogueCompletedCbs_)
+                    cb.Invoke();
+            }
+            ignoreNextInput_ = true;
+            //Debug.Log("End of dialogue box, ignoring next input.");
         }
         else
-            state_ = State.Scrolling;
+        {
+            StartDialogueScroll();
+            //Debug.Log("Showing next dialogue, ignoring next input.");
+        }
     }
 
-    // Skips to end of dialogue.
-    public void SkipToEnd()
+    public void SetRenderersEnabled(bool isEnabled)
     {
-        dialogueText_.text = dialogues_[dialogueIndex_];
-        subStringLength_ = dialogues_[dialogueIndex_].Length;
-        timer_ = 0.0f;
-        state_ = State.Waiting;
+        foreach (Image r in renderers_)
+            r.enabled = isEnabled;
+
+        nameText_.enabled = isEnabled;
+        dialogueText_.enabled = isEnabled;
     }
 
+    private void ClearText()
+    {
+        dialogueText_.text = "";
+        timer_ = 0.0f;
+        subStringLength_ = 0;
+    }
 
     // Scrolls through text
     private void ScrollText()
@@ -153,25 +214,37 @@ public class DialogueView : MonoBehaviour
         timer_ += Time.deltaTime;
         if (timer_ > scrollIntervalSec_)
         {
-            string text = dialogues_[dialogueIndex_];
+            string text = model_.Dialogue[dialogueIndex_].Text;
 
             subStringLength_++;
             // Reached the end of text.
-            if (subStringLength_ >= text.Length)
+            if (subStringLength_ > text.Length)
             {
-                state_ = State.Waiting;
+                ShowOptionsIfExist();
                 return;
             }
 
-            if (!charsToIgnoreForTicks.Contains(text[subStringLength_]))
-            {
-                tickAudioSource_.volume = baseVolume_ + Random.Range(-volumeVariance_, volumeVariance_);
-                tickAudioSource_.pitch = basePitch_ + Random.Range(-pitchVariance_, pitchVariance_);
-                tickAudioSource_.PlayOneShot(tickAudioClip_);
-            }
-
             dialogueText_.text = text.Substring(0, subStringLength_);
+            if (!charsToIgnoreForTicks.Contains(text[subStringLength_ - 1]))
+            {
+                tickAudioSource_.volume = model_.Volume
+                    + UnityEngine.Random.Range(-model_.VolumeVariance, model_.VolumeVariance);
+                tickAudioSource_.pitch = model_.Pitch
+                    + UnityEngine.Random.Range(-model_.PitchVariance, model_.PitchVariance);
+                tickAudioSource_.PlayOneShot(model_.TickAudioClip);
+            }
             timer_ = 0.0f;
         }
+    }
+
+    private void ShowOptionsIfExist()
+    {
+        state_ = State.Waiting;
+        if (model_.Dialogue[dialogueIndex_].Options == null ||
+            model_.Dialogue[dialogueIndex_].Options.Length == 0)
+            return;
+
+        dialogueOptionView_.DialogueOptions = model_.Dialogue[dialogueIndex_].Options;
+        state_ = State.WaitingForOptionSelection;
     }
 }
