@@ -21,7 +21,17 @@ public class DialogueView : MonoBehaviour
     [SerializeField]
     DialogueOptionView dialogueOptionView_ = null;
 
-    private HashSet<char> charsToIgnoreForTicks = new HashSet<char>();
+    private HashSet<char> charsToIgnoreForTicks_ = new HashSet<char>();
+    private HashSet<char> charsToLowerVoice_ = new HashSet<char>();
+    private HashSet<char> charsToStopLoweringVoice_ = new HashSet<char>();
+
+    [SerializeField]
+    float lowerVoiceVolumeFactor_ = 0.3f;
+
+    [SerializeField]
+    float shoutVoiceVolumeIncrement_ = 0.15f;
+
+    bool isCurrentlyLoweringVoice = false;
 
     bool ignoreNextInput_ = false;
 
@@ -78,9 +88,17 @@ public class DialogueView : MonoBehaviour
         if (renderers_ == null || renderers_.Length == 0)
             renderers_ = GetComponentsInChildren<Image>();
 
-        char[] charsToIgnore = { ',', '.', ' ', '\n', '!', '-' };
+        char[] charsToIgnore = { ',', '.', ' ', '\n', '!', '-', '(', '{', '[', ')', '}', ']', '*', };
         foreach (char c in charsToIgnore)
-            charsToIgnoreForTicks.Add(c);
+            charsToIgnoreForTicks_.Add(c);
+
+        char[] lowerVoiceChar = { '(', '{', '[', };
+        foreach (char c in lowerVoiceChar)
+            charsToLowerVoice_.Add(c);
+
+        char[] stopLowerVoiceChar = { ')', '}', ']', };
+        foreach (char c in stopLowerVoiceChar)
+            charsToStopLoweringVoice_.Add(c);
     }
 
     // Start is called before the first frame update
@@ -103,9 +121,10 @@ public class DialogueView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ignoreNextInput_)
+        if (Input.GetButtonUp("Talk"))
+        {
             ignoreNextInput_ = false;
-
+        }
         switch (state_)
         {
             case State.Scrolling:
@@ -120,11 +139,12 @@ public class DialogueView : MonoBehaviour
     // Starts the text scrolling.
     public bool StartDialogueScroll()
     {
-        // Check if flags are met for dialogue.
-        if (!flagManager_.GetFlagCompletion(model_.Dialogue[dialogueIndex_].PrereqFlag) ||
-            !flagManager_.GetFlagUnmet(model_.Dialogue[dialogueIndex_].PrereqUnmetFlags))
+        // Proceed until we find a dialogue we can hit.
+        while (dialogueIndex_ >= model_.Dialogue.Length ||
+                !flagManager_.GetFlagCompletion(model_.Dialogue[dialogueIndex_].PrereqFlag) ||
+                !flagManager_.GetFlagUnmet(model_.Dialogue[dialogueIndex_].PrereqUnmetFlags))
         {
-            GoToNext();
+            GoToNext(false);
         }
 
         //Debug.Log("Attempgint to start dialogue scroll");
@@ -157,6 +177,7 @@ public class DialogueView : MonoBehaviour
             timer_ = 0.0f;
             ShowOptionsIfExist();
             ignoreNextInput_ = true;
+            isCurrentlyLoweringVoice = false;
             //Debug.Log("Skipped to end, ignoring next input.");
         }
         else if (state_ == State.Waiting)
@@ -165,7 +186,7 @@ public class DialogueView : MonoBehaviour
         }
     }
 
-    public void GoToNext()
+    public void GoToNext(bool assignIgnoreNext = true)
     {
         // Clear view for next dialogue.
         dialogueIndex_++;
@@ -182,10 +203,11 @@ public class DialogueView : MonoBehaviour
                 foreach (Func<bool> cb in dialogueCompletedCbs_)
                     cb.Invoke();
             }
-            ignoreNextInput_ = true;
+            if (assignIgnoreNext)
+                ignoreNextInput_ = true;
             //Debug.Log("End of dialogue box, ignoring next input.");
         }
-        else
+        else if (state_ != State.Initial)
         {
             StartDialogueScroll();
             //Debug.Log("Showing next dialogue, ignoring next input.");
@@ -206,6 +228,7 @@ public class DialogueView : MonoBehaviour
         dialogueText_.text = "";
         timer_ = 0.0f;
         subStringLength_ = 0;
+        isCurrentlyLoweringVoice = false;
     }
 
     // Scrolls through text
@@ -225,12 +248,38 @@ public class DialogueView : MonoBehaviour
             }
 
             dialogueText_.text = text.Substring(0, subStringLength_);
-            if (!charsToIgnoreForTicks.Contains(text[subStringLength_ - 1]))
+            char currChar = text[subStringLength_ - 1];
+
+            // Audio volume control based on brackets
+            if (charsToLowerVoice_.Contains(currChar))
+                isCurrentlyLoweringVoice = true;
+            else if (charsToStopLoweringVoice_.Contains(currChar))
+                isCurrentlyLoweringVoice = false;
+
+            bool isShouting = false;
+            if (subStringLength_ > 1)
             {
-                tickAudioSource_.volume = model_.Volume
-                    + UnityEngine.Random.Range(-model_.VolumeVariance, model_.VolumeVariance);
-                tickAudioSource_.pitch = model_.Pitch
-                    + UnityEngine.Random.Range(-model_.PitchVariance, model_.PitchVariance);
+                isShouting =
+                    char.IsUpper(currChar) && char.IsUpper(text[subStringLength_ - 2]);
+            }
+
+            tickAudioSource_.volume = model_.Volume
+                + UnityEngine.Random.Range(-model_.VolumeVariance, model_.VolumeVariance);
+            if (isCurrentlyLoweringVoice)
+            {
+                tickAudioSource_.volume *= lowerVoiceVolumeFactor_;
+            }
+            if (isShouting)
+            {
+                tickAudioSource_.volume += shoutVoiceVolumeIncrement_;
+            }
+
+            tickAudioSource_.pitch = model_.Pitch
+                + UnityEngine.Random.Range(-model_.PitchVariance, model_.PitchVariance);
+
+            // Play audio
+            if (!charsToIgnoreForTicks_.Contains(currChar))
+            {
                 tickAudioSource_.PlayOneShot(model_.TickAudioClip);
             }
             timer_ = 0.0f;

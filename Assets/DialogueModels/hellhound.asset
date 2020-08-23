@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591f0dc70b7636c4ba02b9878be40000, type: 3}
+  m_Name: hellhound
+  m_EditorClassIdentifier: 
+  DialogueModels:
+  - PrereqFlags: 
+    PrereqUnmetFlags: 05000000
+    Name: ???
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: About time you showed up (press 'E' to advance the dialogue).
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: '*Sigh* Don''t give me that puzzled look (use WASD, arrow keys, or the
+        mouse to select then press ''E'' or click to confirm).'
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Huh?
+        FlagsToMarkAsComplete: 0600000001000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Are you a talking cat?
+        FlagsToMarkAsComplete: 0700000003000000
+    - PrereqFlag: 06000000
+      PrereqUnmetFlags: 
+      Text: Welcome to your new job, hooman.
+      Options: []
+    - PrereqFlag: 06000000
+      PrereqUnmetFlags: 
+      Text: I am the tutorial hellhound.
+      Options: []
+    - PrereqFlag: 07000000
+      PrereqUnmetFlags: 
+      Text: How dare you! I am the most FEARSOME creature, the tutorial hellhound
+        !!!!
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: '*Sigh* And it''s my job to tell you what to do.'
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Approach me and press 'E' to talk to me.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 0.7
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 05000000
+  - PrereqFlags: 05000000
+    PrereqUnmetFlags: 08000000
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 07000000
+      PrereqUnmetFlags: 
+      Text: I guess you do have some skills for being a dummy.
+      Options: []
+    - PrereqFlag: 07000000
+      PrereqUnmetFlags: 
+      Text: (I swear they're just handing this job to folks as if it's free)...
+      Options: []
+    - PrereqFlag: 06000000
+      PrereqUnmetFlags: 
+      Text: Heh, I guess I can see why they hired you, hooman.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I guess it's time for me to explain your job.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You're the new f a r m e r of this land.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: I'll be growing crops?
+        FlagsToMarkAsComplete: 0a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Manual labor? Ewwwww
+        FlagsToMarkAsComplete: 0900000003000000
+    - PrereqFlag: 0700000009000000
+      PrereqUnmetFlags: 
+      Text: (Oh Great Infernal Bone, please... I just want to be free)
+      Options: []
+    - PrereqFlag: 09000000
+      PrereqUnmetFlags: 
+      Text: Stop complaining will ya!?
+      Options: []
+    - PrereqFlag: 0a000000
+      PrereqUnmetFlags: 
+      Text: Well not exactly...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Folks from all over the land come to the f a r m e r with all sorts of
+        problems.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Those problems come in the form of seeds, and it's your job to plant
+        'em  in the ground.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: As they grow, these plants will want to talk to someone, and that's where
+        you come in.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Guess folks just want someone to talk to, you know?
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Once the plants have all grown up, you harvest them and give it back
+        to the folks.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: And I guess, you're somehow the one who's most capable of this job.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Heh, any questions?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Nope, none at all!
+        FlagsToMarkAsComplete: 0b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Could you repeat that?
+        FlagsToMarkAsComplete: 0c0000001200000003000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Can I pet you?
+        FlagsToMarkAsComplete: 0d000000
+    - PrereqFlag: 0b000000
+      PrereqUnmetFlags: 
+      Text: Great -- I guess I can see why they hired you, hooman.
+      Options: []
+    - PrereqFlag: 0c000000
+      PrereqUnmetFlags: 
+      Text: The tutorial hellhound does NOT repeat it's instructions!
+      Options: []
+    - PrereqFlag: 0c000000
+      PrereqUnmetFlags: 
+      Text: (but you can press 'Tab' for controls & how to play)
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 0d000000
+      Text: Now head on through this door to meet some folks.
+      Options: []
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: you WHAT?
+      Options: []
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: you can NOT pet me, hooman!
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Pleasee
+        FlagsToMarkAsComplete: 12000000
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: no......
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Pleaseeeeeeeeeee
+        FlagsToMarkAsComplete: 13000000
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: grrr.........
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Reach for a head pat*'
+        FlagsToMarkAsComplete: 0f0000001400000001000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Reach for a tummy rub*'
+        FlagsToMarkAsComplete: 100000001400000002000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Back away slowly*'
+        FlagsToMarkAsComplete: 0e00000011000000
+    - PrereqFlag: 0e000000
+      PrereqUnmetFlags: 
+      Text: Yeah, I thought so. Now get through this door and stop dilly-dallying!!!!!
+      Options: []
+    - PrereqFlag: 0f000000
+      PrereqUnmetFlags: 
+      Text: grrrrrrr..........
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Who's a good tutorial hellhound?
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 10000000
+      PrereqUnmetFlags: 
+      Text: ASDFSAdfdsfass.... asdf...
+      Options: []
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 0e000000
+      Text: ...
+      Options: []
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 0e000000
+      Text: i. hate. you. so. much. right. now.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: But your smile says otherwise :)
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 0e000000
+      Text: Go through this door and never speak to me again.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 0.85
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 0800000011000000

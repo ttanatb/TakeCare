@@ -56,14 +56,21 @@ public class PlayerTalkCoordinator : MonoBehaviour
     {
         if (Input.GetButtonDown("Talk"))
         {
-            if (currTalkableNPC_ == null || state_ == PlayerDialogueState.InDialogue)
+            if (currTalkableNPC_ == null)
                 return;
 
-            if (uiManager_.SetAndShowDialogue(
-                currTalkableNPC_.Model, dialogueCompletedCb_))
-            {
-                state_ = PlayerDialogueState.InDialogue;
-            }
+            SetTalking(currTalkableNPC_.Model);
+        }
+    }
+
+    public void SetTalking(DialogueModel model)
+    {
+        if (state_ == PlayerDialogueState.InDialogue)
+            return;
+
+        if (uiManager_.SetAndShowDialogue(model, dialogueCompletedCb_))
+        {
+            state_ = PlayerDialogueState.InDialogue;
         }
     }
 

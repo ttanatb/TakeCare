@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 
 
@@ -21,7 +22,6 @@ public class Dialogue
     public FlagManager.EventFlag[] PrereqUnmetFlags;
     public string Text;
     public DialogueOption[] Options;
-    public FlagManager.EventFlag[] FlagsToMarkAsComplete;
 }
 
 [System.Serializable]
@@ -45,17 +45,20 @@ public class TalkableNPC : MonoBehaviour
     FlagManager flagManager_;
 
     [SerializeField]
-    DialogueModel[] models_;
+    string soAssetName;
+
+    [SerializeField]
+    DialogueModelSO soModel_;
 
     public DialogueModel Model
     {
         get
         {
-            for (int i = models_.Length - 1; i > -1; i--)
+            for (int i = soModel_.DialogueModels.Length - 1; i > -1; i--)
             {
-                if (flagManager_.GetFlagCompletion(models_[i].PrereqFlags) &&
-                    flagManager_.GetFlagUnmet(models_[i].PrereqUnmetFlags))
-                    return models_[i];
+                if (flagManager_.GetFlagCompletion(soModel_.DialogueModels[i].PrereqFlags) &&
+                    flagManager_.GetFlagUnmet(soModel_.DialogueModels[i].PrereqUnmetFlags))
+                    return soModel_.DialogueModels[i];
             }
             return null;
         }
@@ -63,10 +66,10 @@ public class TalkableNPC : MonoBehaviour
 
     public bool HasAvailableModel()
     {
-        for (int i = models_.Length - 1; i > -1; i--)
+        for (int i = soModel_.DialogueModels.Length - 1; i > -1; i--)
         {
-            if (flagManager_.GetFlagCompletion(models_[i].PrereqFlags) &&
-                flagManager_.GetFlagUnmet(models_[i].PrereqUnmetFlags))
+            if (flagManager_.GetFlagCompletion(soModel_.DialogueModels[i].PrereqFlags) &&
+                flagManager_.GetFlagUnmet(soModel_.DialogueModels[i].PrereqUnmetFlags))
                 return true;
         }
         return false;
@@ -79,8 +82,20 @@ public class TalkableNPC : MonoBehaviour
     {
         flagManager_ = FlagManager.Instance;
 
+#if UNITY_EDITOR
+        if (soModel_ == null && soAssetName != "")
+        {
+            soModel_ = (DialogueModelSO)AssetDatabase.
+                LoadAssetAtPath("Assets/DialogueModels/" +
+                soAssetName + ".asset", typeof(DialogueModelSO));
+
+        }
+#endif
         if (interactbleText_ == null)
+        {
             interactbleText_ = GetComponentInChildren<TextMeshPro>();
+        }
+        SetInteractable(false);
     }
 
     public void SetInteractable(bool isInteractable)

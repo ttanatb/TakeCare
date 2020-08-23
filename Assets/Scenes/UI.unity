@@ -402,6 +402,8 @@ MonoBehaviour:
   dialogueText_: {fileID: 1562153487}
   tickAudioSource_: {fileID: 86748706}
   dialogueOptionView_: {fileID: 236831554}
+  lowerVoiceVolumeFactor_: 0.45
+  shoutVoiceVolumeIncrement_: 0.25
   renderers_: []
   model_:
     PrereqFlags: 
@@ -884,7 +886,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -170}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 348.7, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &691423645
 MonoBehaviour:
@@ -1003,7 +1005,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 348.7, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1182938764
 MonoBehaviour:
@@ -1434,7 +1436,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 348.7, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1563637749
 MonoBehaviour:
@@ -1628,7 +1630,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -130}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 348.7, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1744663519
 MonoBehaviour:
@@ -1903,7 +1905,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 348.7, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1925066416
 MonoBehaviour:

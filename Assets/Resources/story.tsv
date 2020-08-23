@@ -1,0 +1,38 @@
+0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26	27	28	29	30
+ID	CompletionFlags	PreReqFlagsModel	PreReqUnmetFlagsModel	Name	Dialogue	PreReqForDialogue	PreReqUnmetDialogue	Option #1	PreReqForOpt	FlagToFlip	Option #2	PreReqForOpt	FlagToFlip	Option #3	PreReqForOpt	FlagToFlip	Option #4	PreReqForOpt	FlagToFlip	Option #5	PreReqForOpt	FlagToFlip	Speed	Pitch	PitchVariance	Volume	VolumeVariance	TickAudioClip	SpeedDiff	VolumeDiff
+hellhound	StartingSeq1		StartingSeq1	???	About time you showed up (press 'E' to advance the dialogue).																		20	0.5	0.1	0.7	0.1	DialogueTick.wav		
+					*Sigh* Don't give me that puzzled look (use WASD, arrow keys, or the mouse to select then press 'E' or click to confirm).			Huh?		StartingSeq1Huh,TutHellHoundSit	Are you a talking cat?		StartingSeq1Cat, TutHellHoundShock																	
+					Welcome to your new job, hooman.	StartingSeq1Huh																								
+					I am the tutorial hellhound.	StartingSeq1Huh																								
+					How dare you! I am the most FEARSOME creature, the tutorial hellhound !!!!	StartingSeq1Cat																								
+					*Sigh* And it's my job to tell you what to do.																									
+					Approach me and press 'E' to talk to me.																									
+	StartingSeq2, CameraReset	StartingSeq1	StartingSeq2	Tutorial Hellhound	I guess you do have some skills for being a dummy.	StartingSeq1Cat																	20	0.5	0.1	0.85	0.1	DialogueTick.wav		
+					(I swear they're just handing this job to folks as if it's free)...	StartingSeq1Cat																								
+					Heh, I guess I can see why they hired you, hooman.	StartingSeq1Huh																								
+					I guess it's time for me to explain your job.																									
+					You're the new f a r m e r of this land.			I'll be growing crops?		StartingSeq2Crops	Manual labor? Ewwwww		StartingSeq2Ew,TutHellHoundShock																	
+					(Oh Great Infernal Bone, please... I just want to be free)	StartingSeq1Cat, StartingSeq2Ew																								
+					Stop complaining will ya!?	StartingSeq2Ew																								
+					Well not exactly...	StartingSeq2Crops																								
+					Folks from all over the land come to the f a r m e r with all sorts of problems.																									
+					Those problems come in the form of seeds, and it's your job to plant 'em  in the ground.																									
+					As they grow, these plants will want to talk to someone, and that's where you come in.																									
+					Guess folks just want someone to talk to, you know?																									
+					Once the plants have all grown up, you harvest them and give it back to the folks.																									
+					And I guess, you're somehow the one who's most capable of this job.																									
+					Heh, any questions?			Nope, none at all!		StartingSeq2NoQ	Could you repeat that?		StartingSeq2Repeat, StartingSeq2PetZoom1, TutHellHoundShock	Can I pet you?		StartingSeq2Pet														
+					Great -- I guess I can see why they hired you, hooman.	StartingSeq2NoQ																								
+					The tutorial hellhound does NOT repeat it's instructions!	StartingSeq2Repeat																								
+					(but you can press 'Tab' for controls & how to play)	StartingSeq2Repeat																								
+					Now head on through this door to meet some folks.		StartingSeq2Pet																							
+					you WHAT?	StartingSeq2Pet																								
+					you can NOT pet me, hooman!	StartingSeq2Pet		Pleasee		StartingSeq2PetZoom1																				
+					no......	StartingSeq2Pet		Pleaseeeeeeeeeee		StartingSeq2PetZoom2																				
+					grrr.........	StartingSeq2Pet		*Reach for a head pat*		StartingSeq2PetHead,StartingSeq2PetZoom3,TutHellHoundSit	*Reach for a tummy rub*		StartingSeq2PetTummy,StartingSeq2PetZoom3,TutHellHoundSleep	*Back away slowly*		StartingSeq2PetBackAway, CameraReset														
+					Yeah, I thought so. Now get through this door and stop dilly-dallying!!!!!	StartingSeq2PetBackAway																								
+					grrrrrrr..........	StartingSeq2PetHead		Who's a good tutorial hellhound?																						
+					ASDFSAdfdsfass.... asdf...	StartingSeq2PetTummy																								
+					...	StartingSeq2Pet	StartingSeq2PetBackAway																							
+					i. hate. you. so. much. right. now.	StartingSeq2Pet	StartingSeq2PetBackAway	But your smile says otherwise :)																						
+					Go through this door and never speak to me again.	StartingSeq2Pet	StartingSeq2PetBackAway																							
