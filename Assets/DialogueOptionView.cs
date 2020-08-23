@@ -4,9 +4,15 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class DialogueOptionView : MonoBehaviour
 {
+    const float VOLUME = 1.0f;
+    const float VOLUME_VARIANCE = 0.1f;
+    const float PITCH = 1.0f;
+    const float PITCH_VARIANCE = 0.1f;
+
     [SerializeField]
     private TextMeshProUGUI[] textOptions_;
 
@@ -21,6 +27,15 @@ public class DialogueOptionView : MonoBehaviour
 
     [SerializeField]
     private Color defaultButtonColor_;
+
+    [SerializeField]
+    private AudioClip changeSelectionSound_;
+
+    [SerializeField]
+    private AudioClip confirmSelectionSound_;
+
+    [SerializeField]
+    private AudioSource audioSource_;
 
     FlagManager flagManager_;
     DialogueOption[] dialogueOptions_;
@@ -104,7 +119,7 @@ public class DialogueOptionView : MonoBehaviour
             optionButtonImages_[prevIndex].color = defaultButtonColor_;
 
         optionButtonImages_[selectedIndex].color = selectedButtonColor_;
-
+        PlayAudioOneShot(changeSelectionSound_, -PITCH_VARIANCE);
     }
 
     public void MoveSelectorUp()
@@ -121,6 +136,7 @@ public class DialogueOptionView : MonoBehaviour
             optionButtonImages_[prevIndex].color = defaultButtonColor_;
 
         optionButtonImages_[selectedIndex].color = selectedButtonColor_;
+        PlayAudioOneShot(changeSelectionSound_, PITCH_VARIANCE);
     }
 
     public void ConfirmSelection()
@@ -130,12 +146,14 @@ public class DialogueOptionView : MonoBehaviour
             // Go to first option as selection.
             selectedIndex = 0;
             optionButtonImages_[selectedIndex].color = selectedButtonColor_;
+            PlayAudioOneShot(changeSelectionSound_);
         }
         else
         {
             // Select that button.
             optionButtonImages_[selectedIndex].color = defaultButtonColor_;
             optionButtons_[selectedIndex].onClick.Invoke();
+            PlayAudioOneShot(confirmSelectionSound_);
         }
     }
 
@@ -158,6 +176,15 @@ public class DialogueOptionView : MonoBehaviour
             optionButtons_[i].enabled = false;
             optionButtonImages_[i].enabled = false;
         }
+    }
+
+    private void PlayAudioOneShot(AudioClip clip, float pitchChange = 0)
+    {
+        audioSource_.volume = VOLUME
+            + UnityEngine.Random.Range(-VOLUME_VARIANCE, VOLUME_VARIANCE);
+        audioSource_.pitch = PITCH + pitchChange
+            + UnityEngine.Random.Range(-PITCH_VARIANCE, PITCH_VARIANCE);
+        audioSource_.PlayOneShot(clip);
     }
 
     // Update is called once per frame

@@ -19,6 +19,7 @@ public class FlagManager : Singleton<FlagManager>
         SelectedPineapple,
     }
 
+    [SerializeField]
     FlagCompletionEvent flagCompletedEvent = new FlagCompletionEvent();
 
     public void AddListener(UnityAction<EventFlag> eventCompletedCb)
