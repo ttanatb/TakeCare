@@ -10,10 +10,15 @@ public class PlayerTalkCoordinator : MonoBehaviour
     LayerMask npcLayerMask = 9;
 
     [SerializeField]
+    LayerMask teleporterLayerMask = 9;
+
+    [SerializeField]
     TalkableNPC currTalkableNPC_ = null;
 
     UIManager uiManager_ = null;
     FlagManager flagManager_;
+
+    TeleportPoint lastTpTarget_ = null;
 
     public enum PlayerDialogueState
     {
@@ -61,6 +66,16 @@ public class PlayerTalkCoordinator : MonoBehaviour
 
             SetTalking(currTalkableNPC_.Model);
         }
+    }
+
+    public bool TeleportTo(Vector3 position, TeleportPoint activatingTpPoint, TeleportPoint targetTPpoint)
+    {
+        if (activatingTpPoint == lastTpTarget_)
+            return false;
+
+        lastTpTarget_ = targetTPpoint;
+        transform.position = position;
+        return true;
     }
 
     public void SetTalking(DialogueModel model)
@@ -120,6 +135,11 @@ public class PlayerTalkCoordinator : MonoBehaviour
 
             currTalkableNPC_.SetInteractable(false);
             currTalkableNPC_ = null;
+        }
+        else if (teleporterLayerMask == (teleporterLayerMask | (1 << other.gameObject.layer)))
+        {
+            if (other.GetComponent<TeleportPoint>() == lastTpTarget_)
+                lastTpTarget_ = null;
         }
     }
 }

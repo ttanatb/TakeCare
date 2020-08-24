@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScrollingBillboard : MonoBehaviour
 {
-    const float BOUND_X = 15.0f;
 
     [SerializeField]
     private float scrollSpeed_ = 0.5f;
@@ -12,20 +11,24 @@ public class ScrollingBillboard : MonoBehaviour
     [SerializeField]
     private float scrollVariance_ = 0.1f;
 
-    Transform cameraTransform_ = null;
+    //[SerializeField]
+    //Transform cameraTransform_ = null;
 
-    public Transform CameraTransform
-    {
-        set { cameraTransform_ = value; }
-        get { return cameraTransform_; }
-    }
+    [SerializeField]
+    float boundMinX = -15.0f;
+
+    [SerializeField]
+    float boundMaxX = 15.0f;
+
+    //public Transform CameraTransform
+    //{
+    //    set { cameraTransform_ = value; }
+    //    get { return cameraTransform_; }
+    //}
 
     // Start is called before the first frame update
     void Start()
     {
-        if (cameraTransform_ == null)
-            cameraTransform_ = Camera.main.transform;
-
         scrollSpeed_ += Random.Range(-scrollVariance_, scrollVariance_);
     }
 
@@ -33,14 +36,14 @@ public class ScrollingBillboard : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        pos += -cameraTransform_.right * scrollSpeed_ * Time.deltaTime;
-        if (pos.x <= -BOUND_X)
-            pos.x += 2.0f * BOUND_X;
+        pos += -Vector3.right * scrollSpeed_ * Time.deltaTime;
+        if (pos.x <= boundMinX)
+            pos.x += boundMaxX - boundMinX;
 
         transform.position = pos;
 
-        Quaternion rot = transform.rotation;
-        rot = Quaternion.LookRotation((transform.position - cameraTransform_.position).normalized);
-        transform.SetPositionAndRotation(pos, rot);
+        //Quaternion rot = transform.rotation;
+        //rot = Quaternion.LookRotation((transform.position - cameraTransform_.position).normalized);
+        //transform.SetPositionAndRotation(pos, rot);
     }
 }

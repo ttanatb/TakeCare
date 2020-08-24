@@ -140,11 +140,15 @@ public class DialogueView : MonoBehaviour
     public bool StartDialogueScroll()
     {
         // Proceed until we find a dialogue we can hit.
-        while (dialogueIndex_ >= model_.Dialogue.Length ||
-                !flagManager_.GetFlagCompletion(model_.Dialogue[dialogueIndex_].PrereqFlag) ||
-                !flagManager_.GetFlagUnmet(model_.Dialogue[dialogueIndex_].PrereqUnmetFlags))
+        while (true) 
         {
-            GoToNext(false);
+            if (dialogueIndex_ >= model_.Dialogue.Length)
+                return false;
+
+            if (!flagManager_.GetFlagCompletion(model_.Dialogue[dialogueIndex_].PrereqFlag) ||
+                !flagManager_.GetFlagUnmet(model_.Dialogue[dialogueIndex_].PrereqUnmetFlags))
+                GoToNext(false);
+            else break;
         }
 
         //Debug.Log("Attempgint to start dialogue scroll");
