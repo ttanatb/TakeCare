@@ -17,21 +17,37 @@ MonoBehaviour:
     PrereqUnmetFlags: 05000000
     Name: ???
     Dialogue:
-    - PrereqFlag: 
+    - PrereqFlag: 80000000
+      PrereqUnmetFlags: 
+      Text: About time you showed up (click/tap anywhere in this box to advance the
+        dialogue).
+      Options: []
+    - PrereqFlag: 7f000000
       PrereqUnmetFlags: 
       Text: About time you showed up (press 'E' to advance the dialogue).
       Options: []
-    - PrereqFlag: 
+    - PrereqFlag: 7f000000
       PrereqUnmetFlags: 
-      Text: '*Sigh* Don''t give me that puzzled look (use WASD, arrow keys, or the
-        mouse to select then press ''E'' or click to confirm).'
+      Text: Ugh, don't give me that puzzled look (use WASD or arrow keys, then press
+        'E' or click to confirm).
       Options:
       - RequiredFlagsForDialogue: 
         DialogueText: Huh?
-        FlagsToMarkAsComplete: 0600000001000000
+        FlagsToMarkAsComplete: 060000000100000058000000
       - RequiredFlagsForDialogue: 
         DialogueText: Are you a talking cat?
-        FlagsToMarkAsComplete: 0700000003000000
+        FlagsToMarkAsComplete: 070000000300000058000000
+    - PrereqFlag: 80000000
+      PrereqUnmetFlags: 
+      Text: Ugh, don't give me that puzzled look (click/tap on one of the buttons
+        to make a selection).
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Huh?
+        FlagsToMarkAsComplete: 060000000100000058000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Are you a talking cat?
+        FlagsToMarkAsComplete: 070000000300000058000000
     - PrereqFlag: 06000000
       PrereqUnmetFlags: 
       Text: Welcome to your new job, hooman.
@@ -42,21 +58,66 @@ MonoBehaviour:
       Options: []
     - PrereqFlag: 07000000
       PrereqUnmetFlags: 
-      Text: How dare you! I am the most FEARSOME creature, the tutorial hellhound
-        !!!!
+      Text: How dare you! I am the most FEARSOME creature, the TUTORIAL HELLHOUND!!!!
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: '*Sigh* And it''s my job to tell you what to do.'
+      Text: Uh, and it's my job to tell you what to do.
+      Options: []
+    - PrereqFlag: 7f000000
+      PrereqUnmetFlags: 
+      Text: For instance, if you press the 'Esc' key, something called a 'not-pause
+        menu' will be shown to you.
+      Options: []
+    - PrereqFlag: 80000000
+      PrereqUnmetFlags: 
+      Text: For instance, if you click/tap on the object in the bottom-left corner
+        of the screen, something called a 'not-pause menu' will be shown to you.
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: Approach me and press 'E' to talk to me.
+      Text: I don't really know what it is, but I think you can use it to 'restart
+        the game' (whatever that means...)
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Got it?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Yeah
+        FlagsToMarkAsComplete: 
+      - RequiredFlagsForDialogue: 
+        DialogueText: Could you repeat that?
+        FlagsToMarkAsComplete: 81000000
+    - PrereqFlag: 81000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 810000007f000000
+      PrereqUnmetFlags: 
+      Text: Just press on each key and you'll figure it out eventually
+      Options: []
+    - PrereqFlag: 8100000080000000
+      PrereqUnmetFlags: 
+      Text: Just click/tap everywhere, you'll figure it out somehow
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Now your first task is to approach me and talk to me
+      Options: []
+    - PrereqFlag: 80000000
+      PrereqUnmetFlags: 
+      Text: Click/tap and hold on the screen and you'll walk towards it. Click/tap
+        on me again to talk to me.
+      Options: []
+    - PrereqFlag: 7f000000
+      PrereqUnmetFlags: 
+      Text: Use the WASD key to walk up in front of me and press 'E' to talk to me.
       Options: []
     Speed: 20
     Pitch: 0.5
     PitchVariance: 0.1
-    Volume: 0.7
+    Volume: 1
     VolumeVariance: 0.1
     TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
     FlagsToMarkComplete: 05000000
@@ -66,7 +127,7 @@ MonoBehaviour:
     Dialogue:
     - PrereqFlag: 07000000
       PrereqUnmetFlags: 
-      Text: I guess you do have some skills for being a dummy.
+      Text: I guess you do have some skill for being a dummy.
       Options: []
     - PrereqFlag: 07000000
       PrereqUnmetFlags: 
@@ -109,17 +170,18 @@ MonoBehaviour:
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: Those problems come in the form of seeds, and it's your job to plant
-        'em  in the ground.
+      Text: 'Those problems... I guess it would make the most sense to you if I compare
+        it to a seed. '
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: As they grow, these plants will want to talk to someone, and that's where
-        you come in.
+      Text: You plant them in the ground, but instead of waterin' them... you talk
+        to 'em.
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: Guess folks just want someone to talk to, you know?
+      Text: Guess folks just want to talk to someone during these trying times, you
+        know?
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
@@ -128,7 +190,7 @@ MonoBehaviour:
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
-      Text: And I guess, you're somehow the one who's most capable of this job.
+      Text: And I guess, you're somehow the one who's most qualified of this job.
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 
@@ -139,21 +201,17 @@ MonoBehaviour:
         FlagsToMarkAsComplete: 0b000000
       - RequiredFlagsForDialogue: 
         DialogueText: Could you repeat that?
-        FlagsToMarkAsComplete: 0c0000001200000003000000
+        FlagsToMarkAsComplete: 0c000000
       - RequiredFlagsForDialogue: 
         DialogueText: Can I pet you?
-        FlagsToMarkAsComplete: 0d000000
+        FlagsToMarkAsComplete: 0d00000059000000
     - PrereqFlag: 0b000000
       PrereqUnmetFlags: 
       Text: Great -- I guess I can see why they hired you, hooman.
       Options: []
     - PrereqFlag: 0c000000
       PrereqUnmetFlags: 
-      Text: The tutorial hellhound does NOT repeat it's instructions!
-      Options: []
-    - PrereqFlag: 0c000000
-      PrereqUnmetFlags: 
-      Text: (but you can press 'Tab' for controls & how to play)
+      Text: Just try to pick the best dialogue options, okay?
       Options: []
     - PrereqFlag: 
       PrereqUnmetFlags: 0d000000
@@ -223,7 +281,401 @@ MonoBehaviour:
     Speed: 20
     Pitch: 0.5
     PitchVariance: 0.1
-    Volume: 0.85
+    Volume: 1.1
     VolumeVariance: 0.1
     TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
-    FlagsToMarkComplete: 0800000011000000
+    FlagsToMarkComplete: 0800000011000000380000005b000000
+  - PrereqFlags: 42000000
+    PrereqUnmetFlags: 
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: So... how did it go?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Great
+        FlagsToMarkAsComplete: 43000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Uh... I might've....
+        FlagsToMarkAsComplete: 46000000
+    - PrereqFlag: 43000000
+      PrereqUnmetFlags: 
+      Text: Alright, hooman! Just head on to that dirt pile and plant the seed.
+      Options: []
+    - PrereqFlag: 43000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 44000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: I will do just that
+        FlagsToMarkAsComplete: 45000000
+    - PrereqFlag: 44000000
+      PrereqUnmetFlags: 
+      Text: Why are you silent, hooman?
+      Options: []
+    - PrereqFlag: 45000000
+      PrereqUnmetFlags: 
+      Text: You don't have to tell me what you're doing.
+      Options: []
+    - PrereqFlag: 43000000
+      PrereqUnmetFlags: 
+      Text: Just go on and plan the seed.
+      Options: []
+    - PrereqFlag: 43000000
+      PrereqUnmetFlags: 
+      Text: '... Unless.... '
+      Options: []
+    - PrereqFlag: 46000000
+      PrereqUnmetFlags: 
+      Text: Might've?
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: I might've eaten the seed...
+        FlagsToMarkAsComplete: 14000000470000000300000059000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Oh, nothing.
+        FlagsToMarkAsComplete: 4900000056000000
+    - PrereqFlag: 49000000
+      PrereqUnmetFlags: 
+      Text: Well then go ahead and plant the seed then
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: YOU DID WHAT?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 11000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: (oh great infernal bone, forgive me for what I'm about to say)
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 14000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: ASDFCASFAJWEKFJAWEKFLAWJEFKLAWJFAWMSD<>FMASDKLF JSADKFM<>VMNZXCJVZXKCJV
+        LKASDFJAWEKLMC AS><DJMAF LKSDFJMWAELKFWAKEFJALWKEFJAWLKEFJSADCMZX>VJLKZJVLZKSJ
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 03000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: ASDJFWIOFJQLWKFJ SLKDJF LKASMNXVCBKFJV;LASFJMASLD K,FMWAE;LFKQJFPOSZMVL;MZVZ;XVKASDJFLKAFJAWE
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 03000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: ASDFJALS;FJLKWA MFWEKLM M,XCVNLKSJ;CLASD;LFH;ASLJFALSDFJAS;LDFJSADL;FJLKAWEJFM
+        ,.XCZMVWEJFQKWL
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 03000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: MG.SD,FGKS;DLG;SDLJG dgas wefwf w
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: sdfawfweafaw ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: as.d.. ..ds.....
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 020000005b000000
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: Hooman, you have disappointed me greatly
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: But now you're stuck here forever.
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: Since you ate that seed, there's nothing else you can do.
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: No hidden secrets or anything.
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: Might as well just leave.
+      Options: []
+    - PrereqFlag: 47000000
+      PrereqUnmetFlags: 
+      Text: I guess if you were looking for an ending, you found one.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 1.1
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 4800000011000000
+  - PrereqFlags: 49000000
+    PrereqUnmetFlags: 
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I hope you didn't actually eat the seed.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Because if you did...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You're now stuck here forever.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: There's literally nothing else you can do here.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: No hidden secrets or anything.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Might as well just leave.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I guess if you were looking for an ending, you found one.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 1.1
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 
+  - PrereqFlags: 7a000000
+    PrereqUnmetFlags: 
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Didn't sound like it ended too well
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You know, active listening is all about listening and acknowledging not
+        listening and self-inserting
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Sometimes talking about your personal experience can be helpful, but
+        sometimes folks just don't feel like you're connectin' with them.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: 'Like when someone wants to talk about somethin'', it''s about them --
+        not about you. '
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Don't make them feel like you understand them more than they do -- because
+        you don't
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: We all experience similar feelin's, but it's all built from very different
+        experiences.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: But what do I know, I'm just a tutorial hellhound.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I guess this is it
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: That fella might just be having a bad day
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: They might be able to talk it out with someone and bounce back
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: But your paths no longer cross one another
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Sometimes, you can talk to someone for a very short while and still receive
+        a very lasting impact.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You just want to hope that you've left a positive one.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 1.1
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 
+  - PrereqFlags: 72000000
+    PrereqUnmetFlags: 
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Well, I hope that went well
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Y'know I've been doing this for quite a while now.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: And more often that not you meet folks that you never end up meeting
+        again.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: But your paths no longer cross one another
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Sometimes, you can talk to someone for a very short while and still receive
+        a very lasting impact.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You just want to hope that you've left a positive one.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Out of all the possible outcomes, this might have been the best one.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: But that's it. This is the end, there's nothing left here for you.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Can I pet you though?
+        FlagsToMarkAsComplete: 14000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: NO
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 1.1
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 2100000011000000
+  - PrereqFlags: 7b000000
+    PrereqUnmetFlags: 
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I hope you're proud of what you've done
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Because you're banned from taking calls.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: That's it, this is the end.
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 1.1
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 
+  - PrereqFlags: 7e000000
+    PrereqUnmetFlags: 39000000
+    Name: Tutorial Hellhound
+    Dialogue:
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: I thought I told you not to talk to me again?
+      Options: []
+    - PrereqFlag: 0d000000
+      PrereqUnmetFlags: 
+      Text: Ugh, whatever
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: It looks like you've managed to sprout your first seedling.
+      Options: []
+    - PrereqFlag: 7c000000
+      PrereqUnmetFlags: 
+      Text: But I'm not sure if you can keep this up...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Sometimes it's enough to talk about hobbies and fun stuff
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: We're all fighting against something
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Sometimes it's small, but sometimes it's big and complicated.
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: And if it's the latter, I don't think fun chit-chat's gonna cut it
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: You might not be able to solve all the problems, but at least try to
+        listen will ya?
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Looks like the fella is ready for you
+      Options: []
+    Speed: 20
+    Pitch: 0.5
+    PitchVariance: 0.1
+    Volume: 0.9
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 39000000

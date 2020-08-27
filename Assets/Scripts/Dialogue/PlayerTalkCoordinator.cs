@@ -31,6 +31,18 @@ public class PlayerTalkCoordinator : MonoBehaviour
 
     Func<bool> dialogueCompletedCb_;
 
+    [SerializeField]
+    bool isWeb = true;
+
+    [SerializeField]
+    Camera activeCamera_ = null;
+
+    public Camera ActiveCamera
+    {
+        set { activeCamera_ = value; }
+        get { return activeCamera_; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +61,9 @@ public class PlayerTalkCoordinator : MonoBehaviour
         flagManager_.AddListener(checkStillInteractible);
         uiManager_.Player = this;
 
+        isWeb = Application.platform != RuntimePlatform.WebGLPlayer;
+
+
         dialogueCompletedCb_ = () =>
         {
             state_ = PlayerDialogueState.Inactive;
@@ -59,7 +74,7 @@ public class PlayerTalkCoordinator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Talk"))
+        if (isWeb ? CheckTalkInputWeb() : CheckTalkInputPC())
         {
             if (currTalkableNPC_ == null)
                 return;
@@ -67,6 +82,25 @@ public class PlayerTalkCoordinator : MonoBehaviour
             SetTalking(currTalkableNPC_.Model);
         }
     }
+
+    private bool CheckTalkInputPC()
+    {
+        return Input.GetButtonDown("Talk");
+    }
+
+    private bool CheckTalkInputWeb()
+    {
+        if (!Input.GetMouseButtonDown(0))
+            return false;
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.x /= Screen.width;
+        mousePos.y /= Screen.height;
+
+        Ray ray = activeCamera_.ViewportPointToRay(mousePos);
+        return Physics.Raycast(ray, float.PositiveInfinity, npcLayerMask);
+    }
+
 
     public bool TeleportTo(Vector3 position, TeleportPoint activatingTpPoint, TeleportPoint targetTPpoint)
     {

@@ -53,6 +53,10 @@ public class TeleportPoint : MonoBehaviour
 
             if (player.TeleportTo(pointToTeleportTo_.transform.position, this, pointToTeleportTo_))
             {
+                CharacterMovement movement = player.GetComponent<CharacterMovement>();
+                movement.ActiveCamera = pointToTeleportTo_.associatedCamera_;
+                player.ActiveCamera = pointToTeleportTo_.associatedCamera_;
+
                 SwitchCamAndLights(false);
                 pointToTeleportTo_.SwitchCamAndLights(true);
             }

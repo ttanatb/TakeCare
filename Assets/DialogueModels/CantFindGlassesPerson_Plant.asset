@@ -1,0 +1,581 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591f0dc70b7636c4ba02b9878be40000, type: 3}
+  m_Name: CantFindGlassesPerson_Plant
+  m_EditorClassIdentifier: 
+  DialogueModels:
+  - PrereqFlags: 3d000000
+    PrereqUnmetFlags: 39000000420000007c0000007b00000067000000630000007e000000
+    Name: Person without glasses
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ....
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Hello?
+        FlagsToMarkAsComplete: 4a0000004b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Radical?
+        FlagsToMarkAsComplete: 4a0000004b000000
+      - RequiredFlagsForDialogue: 40000000
+        DialogueText: Om-nom-nom?
+        FlagsToMarkAsComplete: 4a0000004c000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Hello?
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I'm still trying to figure out this plant thing
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Take your time
+        FlagsToMarkAsComplete: 4c000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Hello? I can't hear you...
+        FlagsToMarkAsComplete: 5c00000052000000
+    - PrereqFlag: 5c000000
+      PrereqUnmetFlags: 
+      Text: Hold on... Maybe it's my end...
+      Options: []
+    - PrereqFlag: 5c000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 5c000000
+      PrereqUnmetFlags: 
+      Text: Alright, how about now? Can you hear me?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Loud and clear!
+        FlagsToMarkAsComplete: 4e000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Still can't hear you...
+        FlagsToMarkAsComplete: 5d00000053000000
+    - PrereqFlag: 5d000000
+      PrereqUnmetFlags: 
+      Text: (okay let me try this...)
+      Options: []
+    - PrereqFlag: 5d000000
+      PrereqUnmetFlags: 
+      Text: HOW ABOUT NOW? CAN YOU HEAR ME NOW?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Oh I think it's working now!
+        FlagsToMarkAsComplete: 4e000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Huh I wonder if this is working...
+        FlagsToMarkAsComplete: 5e00000050000000
+    - PrereqFlag: 5e000000
+      PrereqUnmetFlags: 
+      Text: ARGHHHH!!!!
+      Options: []
+    - PrereqFlag: 5e000000
+      PrereqUnmetFlags: 
+      Text: Alright, this isn't worth my time.
+      Options: []
+    - PrereqFlag: 5e000000
+      PrereqUnmetFlags: 
+      Text: I'm just going go give up.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Wait I can hear you now!
+        FlagsToMarkAsComplete: 4b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 7b00000054000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 7b000000
+      Text: Oh Great!
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 7b000000
+      Text: Plant-based communication, huh?
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 7b000000
+      Text: Sometimes makes you feel like you're living in a magical, technical sort
+        of world...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 7b000000
+      Text: Some might even describe it as magitech.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Haha, Magitech -- what a concept XD
+        FlagsToMarkAsComplete: 5f0000004e00000057000000
+    - PrereqFlag: 5f000000
+      PrereqUnmetFlags: 7b000000
+      Text: Yeah, I feel like writers sometimes just use magitech as a 'blanket'
+        way to explain a world.
+      Options: []
+    - PrereqFlag: 5f000000
+      PrereqUnmetFlags: 7b000000
+      Text: Like some might ask how people even talk through plants?
+      Options: []
+    - PrereqFlag: 5f000000
+      PrereqUnmetFlags: 7b000000
+      Text: I mean, duh! Obviously, it's audiobotony tech and geospatial magic of
+        course XD
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Hey man, if it works, it works!
+        FlagsToMarkAsComplete: 4f00000060000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Yeah, you're totally right!
+        FlagsToMarkAsComplete: 4f00000060000000
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: Yeah, right?
+      Options: []
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: I mean who even comes up with audiobotony tech?
+      Options: []
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: Where is the correlation between the two?
+      Options: []
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: Like yes, botany and audio sciences are the two hard sciences, but...
+      Options: []
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: Why is that so?
+      Options: []
+    - PrereqFlag: 60000000
+      PrereqUnmetFlags: 7b000000
+      Text: It's not like they make up our physical world or something, LOL
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: You might be on to something here.
+        FlagsToMarkAsComplete: 4e00000061000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: What are you even talkign about?
+        FlagsToMarkAsComplete: 68000000530000007c0000005b000000
+    - PrereqFlag: 61000000
+      PrereqUnmetFlags: 7b000000
+      Text: You think so?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Yep
+        FlagsToMarkAsComplete: 620000004f000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Nah, just kidding
+        FlagsToMarkAsComplete: 690000007c0000005b000000
+    - PrereqFlag: 62000000
+      PrereqUnmetFlags: 7b000000
+      Text: Ha, I bet that we're living in some sort of simulation.
+      Options: []
+    - PrereqFlag: 62000000
+      PrereqUnmetFlags: 7b000000
+      Text: Maybe like an experiment... or...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: A video game!
+        FlagsToMarkAsComplete: 630000004b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: A book!
+        FlagsToMarkAsComplete: 670000004b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Now this is getting out of hand...
+        FlagsToMarkAsComplete: 69000000
+    - PrereqFlag: 63000000
+      PrereqUnmetFlags: 7b000000
+      Text: Now that's the first I've heard of this.
+      Options: []
+    - PrereqFlag: 63000000
+      PrereqUnmetFlags: 7b000000
+      Text: Now, what kind of character do you think I am?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: The protagonist
+        FlagsToMarkAsComplete: 640000004e000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: The antagonist
+        FlagsToMarkAsComplete: 650000004c0000007c0000005b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: An NPC
+        FlagsToMarkAsComplete: 6600000052000000
+    - PrereqFlag: 63000000
+      PrereqUnmetFlags: 7b000000
+      Text: Huh, interesting... I've never thought of myself that way...
+      Options: []
+    - PrereqFlag: 64000000
+      PrereqUnmetFlags: 7b000000
+      Text: Haha, I would've thought that you'd be the protagonist!
+      Options: []
+    - PrereqFlag: 65000000
+      PrereqUnmetFlags: 7b000000
+      Text: Wow, er... okay
+      Options: []
+    - PrereqFlag: 65000000
+      PrereqUnmetFlags: 7b000000
+      Text: Thanks, I guess
+      Options: []
+    - PrereqFlag: 66000000
+      PrereqUnmetFlags: 7b000000
+      Text: Me? An NPC? That's just absurd XD
+      Options: []
+    - PrereqFlag: 63000000
+      PrereqUnmetFlags: 7b0000007c000000
+      Text: But, oh well... Guess we'll never know for sure...
+      Options: []
+    - PrereqFlag: 67000000
+      PrereqUnmetFlags: 7b000000
+      Text: Heh.... Living as characters within a book...
+      Options: []
+    - PrereqFlag: 67000000
+      PrereqUnmetFlags: 7b000000
+      Text: I guess you're right!
+      Options: []
+    - PrereqFlag: 67000000
+      PrereqUnmetFlags: 7b000000
+      Text: People always talk about living in a video game or a simulation -- we
+        could totally just be characters in someone's novel!
+      Options: []
+    - PrereqFlag: 67000000
+      PrereqUnmetFlags: 7b000000
+      Text: And deja vu's happen when the author decides to re-write something...
+      Options: []
+    - PrereqFlag: 67000000
+      PrereqUnmetFlags: 7b000000
+      Text: And I bet only a sleep-deprived author would write about some kind of
+        in-person therapy, pshhhh
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: LOL we can write the next best seller
+        FlagsToMarkAsComplete: 4e000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: LOL can't wait for the film adaptation
+        FlagsToMarkAsComplete: 4e000000
+    - PrereqFlag: 62000000
+      PrereqUnmetFlags: 7b0000007c000000
+      Text: Oh man, I can't believe how fun it was to talk to you.
+      Options: []
+    - PrereqFlag: 62000000
+      PrereqUnmetFlags: 7b0000007c000000
+      Text: I'm really glad you went down this path with me.
+      Options: []
+    - PrereqFlag: 62000000
+      PrereqUnmetFlags: 7b0000007c000000
+      Text: Thanks
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: No problem, bud
+        FlagsToMarkAsComplete: 4e0000005b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: It's my job
+        FlagsToMarkAsComplete: 4b0000005b000000
+    - PrereqFlag: 68000000
+      PrereqUnmetFlags: 7b000000
+      Text: Oh man I didn't mean to rabbithole like that....
+      Options: []
+    - PrereqFlag: 69000000
+      PrereqUnmetFlags: 7b000000
+      Text: Yeah, you're right...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Oh my, look at the time! I've gotta run!
+      Options: []
+    Speed: 18
+    Pitch: 1.2
+    PitchVariance: 0.1
+    Volume: 0.9
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 9f531f24272eab34badd851f88d7f29e, type: 3}
+    FlagsToMarkComplete: 1e000000540000007e000000
+  - PrereqFlags: 39000000
+    PrereqUnmetFlags: 7d000000
+    Name: Person without glasses
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Hello?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Hey
+        FlagsToMarkAsComplete: 4a0000004b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Howdy-hoo
+        FlagsToMarkAsComplete: 4a0000004e000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Cool, so uh....
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Can I ask you a question?
+        FlagsToMarkAsComplete: 4c00000058000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Uh, yeah sure.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Have you noticed anything different?
+        FlagsToMarkAsComplete: 4b0000006a000000
+    - PrereqFlag: 6a000000
+      PrereqUnmetFlags: 
+      Text: Different?
+      Options: []
+    - PrereqFlag: 6a000000
+      PrereqUnmetFlags: 
+      Text: Can't say I have...
+      Options: []
+    - PrereqFlag: 6a000000
+      PrereqUnmetFlags: 
+      Text: What exactly are you referring to?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: You're talking differently now
+        FlagsToMarkAsComplete: 6d0000004c000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: You sound different
+        FlagsToMarkAsComplete: 6b0000004f000000
+    - PrereqFlag: 6b000000
+      PrereqUnmetFlags: 
+      Text: How so?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Like... More confident?
+        FlagsToMarkAsComplete: 6d000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Like more plant-like?
+        FlagsToMarkAsComplete: 6c000000
+    - PrereqFlag: 6c000000
+      PrereqUnmetFlags: 
+      Text: "\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0"
+      Options: []
+    - PrereqFlag: 6c000000
+      PrereqUnmetFlags: 
+      Text: Oh wait... I don't think plant-communication have emoji support
+      Options: []
+    - PrereqFlag: 6c000000
+      PrereqUnmetFlags: 
+      Text: But uh... if you felt the presence of empty squares, just imagine plant-related
+        emojis in their place.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Actually, I think you sound more confident
+        FlagsToMarkAsComplete: 6d000000
+    - PrereqFlag: 6d000000
+      PrereqUnmetFlags: 
+      Text: Oh, uh... yeah...
+      Options: []
+    - PrereqFlag: 6d000000
+      PrereqUnmetFlags: 
+      Text: I kinda froze when I saw you....
+      Options: []
+    - PrereqFlag: 6d000000
+      PrereqUnmetFlags: 
+      Text: It's probably because you're so charming and dashing in person.
+      Options: []
+    - PrereqFlag: 6d000000
+      PrereqUnmetFlags: 
+      Text: I was just totally infatuated!
+      Options: []
+    - PrereqFlag: 6d000000
+      PrereqUnmetFlags: 
+      Text: Yeah, that's totally all that was.
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Are you sure that's it?
+        FlagsToMarkAsComplete: 4b0000006e0000005b000000
+    - PrereqFlag: 6e000000
+      PrereqUnmetFlags: 
+      Text: Yeah, you're right...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Do you want to talk about it?
+        FlagsToMarkAsComplete: 6f0000004c000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Are you afraid of confrontation?
+        FlagsToMarkAsComplete: 7800000052000000
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 
+      Text: I just...
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 
+      Text: I've been trying to figure out why I feel a certain way and what brought
+        me here today...
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 
+      Text: But I don't know sometimes I just can't, you know
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 
+      Text: I just felt something in me, and nothing felt right, you know?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Your feelings are valid
+        FlagsToMarkAsComplete: 730000004b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: I get it, I feel the same way
+        FlagsToMarkAsComplete: 710000004c000000
+    - PrereqFlag: 71000000
+      PrereqUnmetFlags: 
+      Text: Yeah...
+      Options: []
+    - PrereqFlag: 73000000
+      PrereqUnmetFlags: 
+      Text: Huh?
+      Options: []
+    - PrereqFlag: 73000000
+      PrereqUnmetFlags: 
+      Text: Never heard of that one before
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Talk about how you dealt with anxiety*'
+        FlagsToMarkAsComplete: 740000007a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Acknowledge their effort*'
+        FlagsToMarkAsComplete: 75000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Radical?
+        FlagsToMarkAsComplete: 770000007a000000
+    - PrereqFlag: 74000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 74000000
+      PrereqUnmetFlags: 
+      Text: I wish it was as easy for me as it is for you
+      Options: []
+    - PrereqFlag: 74000000
+      PrereqUnmetFlags: 
+      Text: I guess some people are just wired differently
+      Options: []
+    - PrereqFlag: 75000000
+      PrereqUnmetFlags: 
+      Text: Thanks?
+      Options: []
+    - PrereqFlag: 75000000
+      PrereqUnmetFlags: 
+      Text: I guess I've never looked at it that way before...
+      Options: []
+    - PrereqFlag: 75000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 75000000
+      PrereqUnmetFlags: 
+      Text: I'm sorry but I don't know if I can get into it right now...
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 71000000
+      Text: It's just... there's so much
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: That's okay, take all the time you need
+        FlagsToMarkAsComplete: 4e0000007200000058000000
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 73000000
+      Text: I mean what would you know?
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 73000000
+      Text: We're nothing alike
+      Options: []
+    - PrereqFlag: 6f00000065000000
+      PrereqUnmetFlags: 73000000
+      Text: 'I''m just the antagonist to your dumb video game '
+      Options: []
+    - PrereqFlag: 6f00000066000000
+      PrereqUnmetFlags: 73000000
+      Text: I'm just some NPC in your dumb video game
+      Options: []
+    - PrereqFlag: 6f00000066000000
+      PrereqUnmetFlags: 73000000
+      Text: The outcome of my life has no impact to you anyways
+      Options: []
+    - PrereqFlag: 6f000000
+      PrereqUnmetFlags: 73000000
+      Text: ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 7a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: You're blowing this way out of proportion
+        FlagsToMarkAsComplete: 7a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: I didn't mean it
+        FlagsToMarkAsComplete: 76000000530000007a000000
+    - PrereqFlag: 76000000
+      PrereqUnmetFlags: 
+      Text: Please, stop...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 
+      - RequiredFlagsForDialogue: 
+        DialogueText: Please, just listen to me
+        FlagsToMarkAsComplete: 7a000000
+    - PrereqFlag: 77000000
+      PrereqUnmetFlags: 
+      Text: ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 7a000000
+    - PrereqFlag: 78000000
+      PrereqUnmetFlags: 
+      Text: Where is this coming from?
+      Options: []
+    - PrereqFlag: 78000000
+      PrereqUnmetFlags: 
+      Text: You're just like the rest of them
+      Options: []
+    - PrereqFlag: 78000000
+      PrereqUnmetFlags: 
+      Text: You try to talk to me as if you know everything about my life
+      Options: []
+    - PrereqFlag: 78000000
+      PrereqUnmetFlags: 
+      Text: The things I've gone through...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 7a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: You're blowing this way out of proportion
+        FlagsToMarkAsComplete: 7a000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: I didn't mean it
+        FlagsToMarkAsComplete: 79000000530000007a000000
+    - PrereqFlag: 79000000
+      PrereqUnmetFlags: 
+      Text: No... I can't right now
+      Options: []
+    - PrereqFlag: 7a000000
+      PrereqUnmetFlags: 
+      Text: I'm sorry but I need some time to myself.
+      Options: []
+    - PrereqFlag: 72000000
+      PrereqUnmetFlags: 
+      Text: I think I need some time to process all this.
+      Options: []
+    Speed: 18
+    Pitch: 1.2
+    PitchVariance: 0.1
+    Volume: 0.9
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 9f531f24272eab34badd851f88d7f29e, type: 3}
+    FlagsToMarkComplete: 7d0000002000000054000000

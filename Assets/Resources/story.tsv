@@ -1,13 +1,24 @@
 0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26	27	28	29	30
 ID	CompletionFlags	PreReqFlagsModel	PreReqUnmetFlagsModel	Name	Dialogue	PreReqForDialogue	PreReqUnmetDialogue	Option #1	PreReqForOpt	FlagToFlip	Option #2	PreReqForOpt	FlagToFlip	Option #3	PreReqForOpt	FlagToFlip	Option #4	PreReqForOpt	FlagToFlip	Option #5	PreReqForOpt	FlagToFlip	Speed	Pitch	PitchVariance	Volume	VolumeVariance	TickAudioClip	SpeedDiff	VolumeDiff
-hellhound	StartingSeq1		StartingSeq1	???	About time you showed up (press 'E' to advance the dialogue).																		20	0.5	0.1	0.7	0.1	DialogueTick.wav		
-					*Sigh* Don't give me that puzzled look (use WASD, arrow keys, or the mouse to select then press 'E' or click to confirm).			Huh?		StartingSeq1Huh,TutHellHoundSit	Are you a talking cat?		StartingSeq1Cat, TutHellHoundShock																	
+hellhound	StartingSeq1		StartingSeq1	???	About time you showed up (click/tap anywhere in this box to advance the dialogue).	Platform_Web																	20	0.5	0.1	1	0.1	DialogueTick.wav		
+					About time you showed up (press 'E' to advance the dialogue).	Platform_PC																								
+					Ugh, don't give me that puzzled look (use WASD or arrow keys, then press 'E' or click to confirm).	Platform_PC		Huh?		StartingSeq1Huh,TutHellHoundSit, BGM_Mystery	Are you a talking cat?		StartingSeq1Cat, TutHellHoundShock, BGM_Mystery																	
+					Ugh, don't give me that puzzled look (click/tap on one of the buttons to make a selection).	Platform_Web		Huh?		StartingSeq1Huh,TutHellHoundSit, BGM_Mystery	Are you a talking cat?		StartingSeq1Cat, TutHellHoundShock, BGM_Mystery																	
 					Welcome to your new job, hooman.	StartingSeq1Huh																								
 					I am the tutorial hellhound.	StartingSeq1Huh																								
-					How dare you! I am the most FEARSOME creature, the tutorial hellhound !!!!	StartingSeq1Cat																								
-					*Sigh* And it's my job to tell you what to do.																									
-					Approach me and press 'E' to talk to me.																									
-	StartingSeq2, CameraReset	StartingSeq1	StartingSeq2	Tutorial Hellhound	I guess you do have some skills for being a dummy.	StartingSeq1Cat																	20	0.5	0.1	0.85	0.1	DialogueTick.wav		
+					How dare you! I am the most FEARSOME creature, the TUTORIAL HELLHOUND!!!!	StartingSeq1Cat																								
+					Uh, and it's my job to tell you what to do.																									
+					For instance, if you press the 'Esc' key, something called a 'not-pause menu' will be shown to you.	Platform_PC																								
+					For instance, if you click/tap on the object in the bottom-left corner of the screen, something called a 'not-pause menu' will be shown to you.	Platform_Web																								
+					I don't really know what it is, but I think you can use it to 'restart the game' (whatever that means...)																									
+					Got it?			Yeah			Could you repeat that?		StartingSeq1Repeat																	
+					...	StartingSeq1Repeat																								
+					Just press on each key and you'll figure it out eventually	StartingSeq1Repeat, Platform_PC																								
+					Just click/tap everywhere, you'll figure it out somehow	StartingSeq1Repeat, Platform_Web																								
+					Now your first task is to approach me and talk to me																									
+					Click/tap and hold on the screen and you'll walk towards it. Click/tap on me again to talk to me.	Platform_Web																								
+					Use the WASD key to walk up in front of me and press 'E' to talk to me.	Platform_PC																								
+	StartingSeq2, CameraReset, CantFindGlassesPerson_introduction, BGM_StopMusic	StartingSeq1	StartingSeq2	Tutorial Hellhound	I guess you do have some skill for being a dummy.	StartingSeq1Cat																	20	0.5	0.1	1.1	0.1	DialogueTick.wav		
 					(I swear they're just handing this job to folks as if it's free)...	StartingSeq1Cat																								
 					Heh, I guess I can see why they hired you, hooman.	StartingSeq1Huh																								
 					I guess it's time for me to explain your job.																									
@@ -16,15 +27,14 @@ hellhound	StartingSeq1		StartingSeq1	???	About time you showed up (press 'E' to 
 					Stop complaining will ya!?	StartingSeq2Ew																								
 					Well not exactly...	StartingSeq2Crops																								
 					Folks from all over the land come to the f a r m e r with all sorts of problems.																									
-					Those problems come in the form of seeds, and it's your job to plant 'em  in the ground.																									
-					As they grow, these plants will want to talk to someone, and that's where you come in.																									
-					Guess folks just want someone to talk to, you know?																									
+					Those problems... I guess it would make the most sense to you if I compare it to a seed. 																									
+					You plant them in the ground, but instead of waterin' them... you talk to 'em.																									
+					Guess folks just want to talk to someone during these trying times, you know?																									
 					Once the plants have all grown up, you harvest them and give it back to the folks.																									
-					And I guess, you're somehow the one who's most capable of this job.																									
-					Heh, any questions?			Nope, none at all!		StartingSeq2NoQ	Could you repeat that?		StartingSeq2Repeat, StartingSeq2PetZoom1, TutHellHoundShock	Can I pet you?		StartingSeq2Pet														
+					And I guess, you're somehow the one who's most qualified of this job.																									
+					Heh, any questions?			Nope, none at all!		StartingSeq2NoQ	Could you repeat that?		StartingSeq2Repeat	Can I pet you?		StartingSeq2Pet, BGM_Perion														
 					Great -- I guess I can see why they hired you, hooman.	StartingSeq2NoQ																								
-					The tutorial hellhound does NOT repeat it's instructions!	StartingSeq2Repeat																								
-					(but you can press 'Tab' for controls & how to play)	StartingSeq2Repeat																								
+					Just try to pick the best dialogue options, okay?	StartingSeq2Repeat																								
 					Now head on through this door to meet some folks.		StartingSeq2Pet																							
 					you WHAT?	StartingSeq2Pet																								
 					you can NOT pet me, hooman!	StartingSeq2Pet		Pleasee		StartingSeq2PetZoom1																				
@@ -36,3 +46,197 @@ hellhound	StartingSeq1		StartingSeq1	???	About time you showed up (press 'E' to 
 					...	StartingSeq2Pet	StartingSeq2PetBackAway																							
 					i. hate. you. so. much. right. now.	StartingSeq2Pet	StartingSeq2PetBackAway	But your smile says otherwise :)																						
 					Go through this door and never speak to me again.	StartingSeq2Pet	StartingSeq2PetBackAway																							
+	TutHellHound_AteSeed0,CameraReset	CantFindGlassesPerson_seedStage0_AteTheSeed		Tutorial Hellhound	So... how did it go?			Great		TutHellHound_AteSeed0_Great	Uh... I might've....		TutHellHound_AteSeed0_Uh										20	0.5	0.1	1.1	0.1	DialogueTick.wav		
+					Alright, hooman! Just head on to that dirt pile and plant the seed.	TutHellHound_AteSeed0_Great																								
+					...	TutHellHound_AteSeed0_Great		...		TutHellHound_AteSeed0_Silence	I will do just that		TutHellHound_AteSeed0_DoJustThat																	
+					Why are you silent, hooman?	TutHellHound_AteSeed0_Silence																								
+					You don't have to tell me what you're doing.	TutHellHound_AteSeed0_DoJustThat																								
+					Just go on and plan the seed.	TutHellHound_AteSeed0_Great																								
+					... Unless.... 	TutHellHound_AteSeed0_Great																								
+					Might've?	TutHellHound_AteSeed0_Uh																								
+					...			I might've eaten the seed...		StartingSeq2PetZoom3,TutHellHound_AteSeed0_Confess, TutHellHoundShock, BGM_Perion	Oh, nothing.		TutHellHound_AteSeed0_Lie,BGM_HahaDogBark																	
+					Well then go ahead and plant the seed then	TutHellHound_AteSeed0_Lie																								
+					YOU DID WHAT?	TutHellHound_AteSeed0_Confess		...		CameraReset																				
+					(oh great infernal bone, forgive me for what I'm about to say)	TutHellHound_AteSeed0_Confess		...		StartingSeq2PetZoom3																				
+					ASDFCASFAJWEKFJAWEKFLAWJEFKLAWJFAWMSD<>FMASDKLF JSADKFM<>VMNZXCJVZXKCJV LKASDFJAWEKLMC AS><DJMAF LKSDFJMWAELKFWAKEFJALWKEFJAWLKEFJSADCMZX>VJLKZJVLZKSJ	TutHellHound_AteSeed0_Confess		...		TutHellHoundShock																				
+					ASDJFWIOFJQLWKFJ SLKDJF LKASMNXVCBKFJV;LASFJMASLD K,FMWAE;LFKQJFPOSZMVL;MZVZ;XVKASDJFLKAFJAWE	TutHellHound_AteSeed0_Confess		...		TutHellHoundShock																				
+					ASDFJALS;FJLKWA MFWEKLM M,XCVNLKSJ;CLASD;LFH;ASLJFALSDFJAS;LDFJSADL;FJLKAWEJFM ,.XCZMVWEJFQKWL	TutHellHound_AteSeed0_Confess		...		TutHellHoundShock																				
+					MG.SD,FGKS;DLG;SDLJG dgas wefwf w	TutHellHound_AteSeed0_Confess		...																						
+					sdfawfweafaw ...	TutHellHound_AteSeed0_Confess		...																						
+					as.d.. ..ds.....	TutHellHound_AteSeed0_Confess		...		TutHellHoundSleep, BGM_StopMusic																				
+					Hooman, you have disappointed me greatly	TutHellHound_AteSeed0_Confess																								
+					But now you're stuck here forever.	TutHellHound_AteSeed0_Confess																								
+					Since you ate that seed, there's nothing else you can do.	TutHellHound_AteSeed0_Confess																								
+					No hidden secrets or anything.	TutHellHound_AteSeed0_Confess																								
+					Might as well just leave.	TutHellHound_AteSeed0_Confess																								
+					I guess if you were looking for an ending, you found one.	TutHellHound_AteSeed0_Confess																								
+		TutHellHound_AteSeed0_Lie		Tutorial Hellhound	I hope you didn't actually eat the seed.																		20	0.5	0.1	1.1	0.1	DialogueTick.wav		
+					Because if you did...																									
+					You're now stuck here forever.																									
+					There's literally nothing else you can do here.																									
+					No hidden secrets or anything.																									
+					Might as well just leave.																									
+					I guess if you were looking for an ending, you found one.																									
+		CantFindGlassesPerson_seedStage1_EndConvo_Bad		Tutorial Hellhound	Didn't sound like it ended too well																		20	0.5	0.1	1.1	0.1	DialogueTick.wav		
+					You know, active listening is all about listening and acknowledging not listening and self-inserting																									
+					Sometimes talking about your personal experience can be helpful, but sometimes folks just don't feel like you're connectin' with them.																									
+					Like when someone wants to talk about somethin', it's about them -- not about you. 																									
+					Don't make them feel like you understand them more than they do -- because you don't																									
+					We all experience similar feelin's, but it's all built from very different experiences.																									
+					But what do I know, I'm just a tutorial hellhound.																									
+					...																									
+					I guess this is it																									
+					That fella might just be having a bad day																									
+					They might be able to talk it out with someone and bounce back																									
+					But your paths no longer cross one another																									
+					Sometimes, you can talk to someone for a very short while and still receive a very lasting impact.																									
+					You just want to hope that you've left a positive one.																									
+	PlantSpot0_ShowOpenFlower,CameraReset	CantFindGlassesPerson_seedStage1_EndConvo_Good		Tutorial Hellhound	Well, I hope that went well																		20	0.5	0.1	1.1	0.1	DialogueTick.wav		
+					Y'know I've been doing this for quite a while now.																									
+					And more often that not you meet folks that you never end up meeting again.																									
+					But your paths no longer cross one another																									
+					Sometimes, you can talk to someone for a very short while and still receive a very lasting impact.																									
+					You just want to hope that you've left a positive one.																									
+					Out of all the possible outcomes, this might have been the best one.																									
+					But that's it. This is the end, there's nothing left here for you.			Can I pet you though?		StartingSeq2PetZoom3																				
+					NO																									
+		CantFindGlassesPerson_seedStage1_CantHear4		Tutorial Hellhound	I hope you're proud of what you've done																		20	0.5	0.1	1.1	0.1	DialogueTick.wav		
+					Because you're banned from taking calls.																									
+					That's it, this is the end.																									
+	CantFindGlassesPerson_seedStage1	CantFindGlassesPerson_seedStageIntermission	CantFindGlassesPerson_seedStage1	Tutorial Hellhound	I thought I told you not to talk to me again?	StartingSeq2Pet																	20	0.5	0.1	0.9	0.1	DialogueTick.wav		
+					Ugh, whatever	StartingSeq2Pet																								
+					It looks like you've managed to sprout your first seedling.																									
+					But I'm not sure if you can keep this up...	CantFindGlassesPerson_seedStage1_NotEnoughRapport																								
+					Sometimes it's enough to talk about hobbies and fun stuff																									
+					We're all fighting against something																									
+					Sometimes it's small, but sometimes it's big and complicated.																									
+					And if it's the latter, I don't think fun chit-chat's gonna cut it																									
+					You might not be able to solve all the problems, but at least try to listen will ya?																									
+					...																									
+					Looks like the fella is ready for you																									
+CantFindGlassesPerson_Person	CantFindGlassesPerson_seedStage0	CantFindGlassesPerson_introduction	CantFindGlassesPerson_seedStage0	Person without glasses	Hey uh... it's a... um...																		18	1	0.1	0.9	0.1	DialogueTick.wav		
+					I'm in a bit of pickle.. haha ...			Well, good thing I like pickles		CantFindGlassesPerson_seedStage0_Pickle,SeedPerson_PersonWithoutGlasses_MoveHandToFace,BGM_CoolChill	So how can I help?		CantFindGlassesPerson_seedStage0_Help,SeedPerson_PersonWithoutGlasses_HandBehindHead,BGM_CoolChill																	
+					Haha, yeah I guess pickles are pretty radical...	CantFindGlassesPerson_seedStage0_Pickle																								
+					Oh radical, um yeah...	CantFindGlassesPerson_seedStage0_Help																								
+					(gosh who even says radical irl?)																									
+					Well uh, I'm actually here because...			Because...?		SeedPerson_PersonWithoutGlasses_HandBehindHead		...	SeedPerson_PersonWithoutGlasses_MoveHandToFace																	
+					I... uh... yeah! I can't find my glasses!																									
+					Uh... I've looked everywhere for it!			Uh......		CantFindGlassesPerson_seedStage0_Uh	Sorry, I ate your glasses		CantFindGlassesPerson_seedStage0_Eat,SeedPerson_PersonWithoutGlasses_SayWhat																	
+					Yeah, you're right that was a stupid request.	CantFindGlassesPerson_seedStage0_Uh																								
+					What? Oh no that's not good...	CantFindGlassesPerson_seedStage0_Eat																								
+					(I can't even begin to imagine what your stomach is going through)	CantFindGlassesPerson_seedStage0_Eat																								
+					er... I guess I don't need my glasses...			Okay....		SeedPerson_PersonWithoutGlasses_ImmaCry	Radical		SeedPerson_PersonWithoutGlasses_WeirdHandGesture																	
+					... because...																									
+					uhh... you... ummm.... y-y-you cured my eyesight!																									
+					I no longer have any problems!			Aha...			You're welcome			...																
+					None whatsoever!			Um....		SeedPerson_PersonWithoutGlasses_HandBehindHead,SeedPerson_SeedAppear	It was because of my magic spell		CantFindGlassesPerson_seedStage0_Magic,SeedPerson_PersonWithoutGlasses_SayWhat																	
+					....	CantFindGlassesPerson_seedStage0_Magic		...		SeedPerson_SeedAppear																				
+					Oh is that a seed?			I was told it represents your problems																						
+					Oh... uh.... you really don't have to worry about me...			It's no big deal for me		SeedPerson_PersonWithoutGlasses_HandBehindHead,CantFindGlassesPerson_seedStage0_Plant,SeedPerson_SeedToPlayer	Good thing I'm hungry		SeedPerson_PersonWithoutGlasses_SayWhat,CantFindGlassesPerson_seedStage0_Eat2																	
+					If you say so...	CantFindGlassesPerson_seedStage0_Plant																								
+					(oh no not this again)	CantFindGlassesPerson_seedStage0_Eat2,CantFindGlassesPerson_seedStage0_Eat																								
+					I... uh.... I'm not sure... if that's good for you	CantFindGlassesPerson_seedStage0_Eat2																								
+					.... I guess it's your choice anyways...	CantFindGlassesPerson_seedStage0_Eat2																								
+					(at least you don't have to spend your time on someone like me)	CantFindGlassesPerson_seedStage0_Eat2		*Don't eat it*		SeedPerson_SeedToPlayer	*Eat it*	CantFindGlassesPerson_seedStage0_Eat	CantFindGlassesPerson_seedStage0_AteTheSeed,SeedPerson_PersonWithoutGlasses_SayWhat,SeedPerson_SeedToPlayer																	
+					Oh gosh... You actually ate it.... Radical....	CantFindGlassesPerson_seedStage0_AteTheSeed																								
+					...																									
+					..............																									
+					....................																									
+					uh......................			Bye		SeedPerson_PersonWithoutGlasses_WalkBackward	This is awkward		CantFindGlassesPerson_seedStage0_Awkward, BGM_StopMusic																	
+					(oh no)	CantFindGlassesPerson_seedStage0_Awkward																								
+					(I've made it worse)	CantFindGlassesPerson_seedStage0_Awkward																								
+					(I'm just going to run away now)	CantFindGlassesPerson_seedStage0_Awkward		What's that?		SeedPerson_PersonWithoutGlasses_WalkBackward,BGM_StopMusic																				
+					Bye!																									
+CantFindGlassesPerson_Plant	PlantSpot0_ShowSeedling,HideDialogueImagePanel,CantFindGlassesPerson_seedStageIntermission	CantFindGlassesPerson_seedStage_Planted	CantFindGlassesPerson_seedStage1,CantFindGlassesPerson_seedStage0_AteTheSeed,CantFindGlassesPerson_seedStage1_NotEnoughRapport,CantFindGlassesPerson_seedStage1_CantHear4,CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book,CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame,CantFindGlassesPerson_seedStageIntermission	Person without glasses	....			Hello?		ShowDialogueImagePanel,SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	Radical?		ShowDialogueImagePanel,SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	Om-nom-nom?	CantFindGlassesPerson_seedStage0_Eat2	ShowDialogueImagePanel,SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight							18	1.2	0.1	0.9	0.1	DialogueBeep.wav		
+					Hello?																									
+					I'm still trying to figure out this plant thing			Take your time		SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight	Hello? I can't hear you...		CantFindGlassesPerson_seedStage1_CantHear,SeedPerson_ImagePanel_PersonWithoutGlasses_HeadScratch																	
+					Hold on... Maybe it's my end...	CantFindGlassesPerson_seedStage1_CantHear																								
+					...	CantFindGlassesPerson_seedStage1_CantHear																								
+					Alright, how about now? Can you hear me?	CantFindGlassesPerson_seedStage1_CantHear		Loud and clear!		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile	Still can't hear you...		CantFindGlassesPerson_seedStage1_CantHear2,SeedPerson_ImagePanel_PersonWithoutGlasses_Ashamed																	
+					(okay let me try this...)	CantFindGlassesPerson_seedStage1_CantHear2																								
+					HOW ABOUT NOW? CAN YOU HEAR ME NOW?	CantFindGlassesPerson_seedStage1_CantHear2		Oh I think it's working now!		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile	Huh I wonder if this is working...		CantFindGlassesPerson_seedStage1_CantHear3,SeedPerson_ImagePanel_PersonWithoutGlasses_SmallAngie																	
+					ARGHHHH!!!!	CantFindGlassesPerson_seedStage1_CantHear3																								
+					Alright, this isn't worth my time.	CantFindGlassesPerson_seedStage1_CantHear3																								
+					I'm just going go give up.	CantFindGlassesPerson_seedStage1_CantHear3		Wait I can hear you now!		SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	...		CantFindGlassesPerson_seedStage1_CantHear4,HideDialogueImagePanel																	
+					Oh Great!		CantFindGlassesPerson_seedStage1_CantHear4																							
+					Plant-based communication, huh?		CantFindGlassesPerson_seedStage1_CantHear4																							
+					Sometimes makes you feel like you're living in a magical, technical sort of world...		CantFindGlassesPerson_seedStage1_CantHear4																							
+					Some might even describe it as magitech.		CantFindGlassesPerson_seedStage1_CantHear4	Haha, Magitech -- what a concept XD		CantFindGlassesPerson_seedStage1_Magitech, SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile, BGM_LowFi																				
+					Yeah, I feel like writers sometimes just use magitech as a 'blanket' way to explain a world.	CantFindGlassesPerson_seedStage1_Magitech	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Like some might ask how people even talk through plants?	CantFindGlassesPerson_seedStage1_Magitech	CantFindGlassesPerson_seedStage1_CantHear4																							
+					I mean, duh! Obviously, it's audiobotony tech and geospatial magic of course XD	CantFindGlassesPerson_seedStage1_Magitech	CantFindGlassesPerson_seedStage1_CantHear4	Hey man, if it works, it works!		SeedPerson_ImagePanel_PersonWithoutGlasses_ThinkingFace,CantFindGlassesPerson_seedStage1_Magitech_Agree	Yeah, you're totally right!		SeedPerson_ImagePanel_PersonWithoutGlasses_ThinkingFace, CantFindGlassesPerson_seedStage1_Magitech_Agree																	
+					Yeah, right?	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4																							
+					I mean who even comes up with audiobotony tech?	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Where is the correlation between the two?	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Like yes, botany and audio sciences are the two hard sciences, but...	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Why is that so?	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4																							
+					It's not like they make up our physical world or something, LOL	CantFindGlassesPerson_seedStage1_Magitech_Agree	CantFindGlassesPerson_seedStage1_CantHear4	You might be on to something here.		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile,CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn	What are you even talkign about?		CantFindGlassesPerson_seedStage1_Magitech_Confused, SeedPerson_ImagePanel_PersonWithoutGlasses_Ashamed,CantFindGlassesPerson_seedStage1_NotEnoughRapport,BGM_StopMusic																	
+					You think so?	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn	CantFindGlassesPerson_seedStage1_CantHear4	Yep		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep, SeedPerson_ImagePanel_PersonWithoutGlasses_ThinkingFace	Nah, just kidding		CantFindGlassesPerson_seedStage1_Magitech_Ignore,CantFindGlassesPerson_seedStage1_NotEnoughRapport,BGM_StopMusic																	
+					Ha, I bet that we're living in some sort of simulation.	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Maybe like an experiment... or...	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep	CantFindGlassesPerson_seedStage1_CantHear4	A video game!		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame,SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	A book!		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book,SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	Now this is getting out of hand...		CantFindGlassesPerson_seedStage1_Magitech_Ignore														
+					Now that's the first I've heard of this.	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Now, what kind of character do you think I am?	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame	CantFindGlassesPerson_seedStage1_CantHear4	The protagonist		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Protagonist, SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile	The antagonist		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Antagonist, SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight,CantFindGlassesPerson_seedStage1_NotEnoughRapport,BGM_StopMusic	An NPC		CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_NPC, SeedPerson_ImagePanel_PersonWithoutGlasses_HeadScratch														
+					Huh, interesting... I've never thought of myself that way...	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Haha, I would've thought that you'd be the protagonist!	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Protagonist	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Wow, er... okay	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Antagonist	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Thanks, I guess	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Antagonist	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Me? An NPC? That's just absurd XD	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_NPC	CantFindGlassesPerson_seedStage1_CantHear4																							
+					But, oh well... Guess we'll never know for sure...	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame	CantFindGlassesPerson_seedStage1_CantHear4,CantFindGlassesPerson_seedStage1_NotEnoughRapport																							
+					Heh.... Living as characters within a book...	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book	CantFindGlassesPerson_seedStage1_CantHear4																							
+					I guess you're right!	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book	CantFindGlassesPerson_seedStage1_CantHear4																							
+					People always talk about living in a video game or a simulation -- we could totally just be characters in someone's novel!	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book	CantFindGlassesPerson_seedStage1_CantHear4																							
+					And deja vu's happen when the author decides to re-write something...	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book	CantFindGlassesPerson_seedStage1_CantHear4																							
+					And I bet only a sleep-deprived author would write about some kind of in-person therapy, pshhhh	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_Book	CantFindGlassesPerson_seedStage1_CantHear4	LOL we can write the next best seller		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile	LOL can't wait for the film adaptation		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile																	
+					Oh man, I can't believe how fun it was to talk to you.	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep	CantFindGlassesPerson_seedStage1_CantHear4,CantFindGlassesPerson_seedStage1_NotEnoughRapport																							
+					I'm really glad you went down this path with me.	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep	CantFindGlassesPerson_seedStage1_CantHear4,CantFindGlassesPerson_seedStage1_NotEnoughRapport																							
+					Thanks	CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep	CantFindGlassesPerson_seedStage1_CantHear4,CantFindGlassesPerson_seedStage1_NotEnoughRapport	No problem, bud		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile,BGM_StopMusic	It's my job		SeedPerson_ImagePanel_PersonWithoutGlasses_Idle,BGM_StopMusic																	
+					Oh man I didn't mean to rabbithole like that....	CantFindGlassesPerson_seedStage1_Magitech_Confused	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Yeah, you're right...	CantFindGlassesPerson_seedStage1_Magitech_Ignore	CantFindGlassesPerson_seedStage1_CantHear4																							
+					Oh my, look at the time! I've gotta run!																									
+	CantFindGlassesPerson_seedStage2,PlantSpot0_ShowClosedFlower,HideDialogueImagePanel	CantFindGlassesPerson_seedStage1	CantFindGlassesPerson_seedStage2	Person without glasses	Hello?			Hey		ShowDialogueImagePanel, SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	Howdy-hoo		ShowDialogueImagePanel, SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile										18	1.2	0.1	0.9	0.1	DialogueBeep.wav		
+					Cool, so uh....			Can I ask you a question?		SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight,BGM_Mystery																				
+					Uh, yeah sure.			Have you noticed anything different?		SeedPerson_ImagePanel_PersonWithoutGlasses_Idle,CantFindGlassesPerson_seedStage1_Different																				
+					Different?	CantFindGlassesPerson_seedStage1_Different																								
+					Can't say I have...	CantFindGlassesPerson_seedStage1_Different																								
+					What exactly are you referring to?	CantFindGlassesPerson_seedStage1_Different		You're talking differently now		CantFindGlassesPerson_seedStage1_Different_Confidence,SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight	You sound different		CantFindGlassesPerson_seedStage1_Different_Sound, SeedPerson_ImagePanel_PersonWithoutGlasses_ThinkingFace																	
+					How so?	CantFindGlassesPerson_seedStage1_Different_Sound		Like... More confident?		CantFindGlassesPerson_seedStage1_Different_Confidence	Like more plant-like?		CantFindGlassesPerson_seedStage1_Different_Sound_Plant																	
+					■■■■■■■■■■■■	CantFindGlassesPerson_seedStage1_Different_Sound_Plant																								
+					Oh wait... I don't think plant-communication have emoji support	CantFindGlassesPerson_seedStage1_Different_Sound_Plant																								
+					But uh... if you felt the presence of empty squares, just imagine plant-related emojis in their place.	CantFindGlassesPerson_seedStage1_Different_Sound_Plant		Actually, I think you sound more confident		CantFindGlassesPerson_seedStage1_Different_Confidence																				
+					Oh, uh... yeah...	CantFindGlassesPerson_seedStage1_Different_Confidence																								
+					I kinda froze when I saw you....	CantFindGlassesPerson_seedStage1_Different_Confidence																								
+					It's probably because you're so charming and dashing in person.	CantFindGlassesPerson_seedStage1_Different_Confidence																								
+					I was just totally infatuated!	CantFindGlassesPerson_seedStage1_Different_Confidence																								
+					Yeah, that's totally all that was.	CantFindGlassesPerson_seedStage1_Different_Confidence		Are you sure that's it?		SeedPerson_ImagePanel_PersonWithoutGlasses_Idle, CantFindGlassesPerson_seedStage1_Different_Confidence_Prod, BGM_StopMusic																				
+					Yeah, you're right...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod		Do you want to talk about it?		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod,SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight	Are you afraid of confrontation?		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront,SeedPerson_ImagePanel_PersonWithoutGlasses_HeadScratch																	
+					I just...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod																								
+					I've been trying to figure out why I feel a certain way and what brought me here today...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod																								
+					But I don't know sometimes I just can't, you know	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod																								
+					I just felt something in me, and nothing felt right, you know?	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod		Your feelings are valid		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize,SeedPerson_ImagePanel_PersonWithoutGlasses_Idle	I get it, I feel the same way		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Sympathize,SeedPerson_ImagePanel_PersonWithoutGlasses_LookRight																	
+					Yeah...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Sympathize																								
+					Huh?	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																								
+					Never heard of that one before	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																								
+					...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod		*Talk about how you dealt with anxiety*		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_SelfInsert,CantFindGlassesPerson_seedStage1_EndConvo_Bad	*Acknowledge their effort*		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Acknowledge	Radical?		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Joke,CantFindGlassesPerson_seedStage1_EndConvo_Bad														
+					...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_SelfInsert																								
+					I wish it was as easy for me as it is for you	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_SelfInsert																								
+					I guess some people are just wired differently	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_SelfInsert																								
+					Thanks?	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Acknowledge																								
+					I guess I've never looked at it that way before...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Acknowledge																								
+					...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Acknowledge																								
+					I'm sorry but I don't know if I can get into it right now...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Acknowledge																								
+					It's just... there's so much	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Sympathize	That's okay, take all the time you need		SeedPerson_ImagePanel_PersonWithoutGlasses_SlightSmile, CantFindGlassesPerson_seedStage1_EndConvo_Good,BGM_Mystery																				
+					I mean what would you know?	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																							
+					We're nothing alike	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																							
+					I'm just the antagonist to your dumb video game 	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod, CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_Antagonist	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																							
+					I'm just some NPC in your dumb video game	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod, CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_NPC	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																							
+					The outcome of my life has no impact to you anyways	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod, CantFindGlassesPerson_seedStage1_Magitech_Agree_PushOn_Yep_VideoGame_NPC	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize																							
+					...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Empathize	...		CantFindGlassesPerson_seedStage1_EndConvo_Bad	You're blowing this way out of proportion		CantFindGlassesPerson_seedStage1_EndConvo_Bad	I didn't mean it		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Sympathize_Salvage, SeedPerson_ImagePanel_PersonWithoutGlasses_Ashamed, CantFindGlassesPerson_seedStage1_EndConvo_Bad														
+					Please, stop...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Sympathize_Salvage		...			Please, just listen to me		CantFindGlassesPerson_seedStage1_EndConvo_Bad																	
+					...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Prod_Joke		...		CantFindGlassesPerson_seedStage1_EndConvo_Bad																				
+					Where is this coming from?	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront																								
+					You're just like the rest of them	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront																								
+					You try to talk to me as if you know everything about my life	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront																								
+					The things I've gone through...	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront		...		CantFindGlassesPerson_seedStage1_EndConvo_Bad	You're blowing this way out of proportion		CantFindGlassesPerson_seedStage1_EndConvo_Bad	I didn't mean it		CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront_Salvage, SeedPerson_ImagePanel_PersonWithoutGlasses_Ashamed, CantFindGlassesPerson_seedStage1_EndConvo_Bad														
+					No... I can't right now	CantFindGlassesPerson_seedStage1_Different_Confidence_Prod_Confront_Salvage																								
+					I'm sorry but I need some time to myself.	CantFindGlassesPerson_seedStage1_EndConvo_Bad																								
+					I think I need some time to process all this.	CantFindGlassesPerson_seedStage1_EndConvo_Good																								

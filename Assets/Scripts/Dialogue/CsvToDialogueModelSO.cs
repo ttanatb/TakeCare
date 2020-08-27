@@ -28,148 +28,151 @@ public class CsvToDialogueModelSO : MonoBehaviour
         Dictionary<string, DialogueModelSO> idToModelSO
             = new Dictionary<string, DialogueModelSO>();
 
-        while (true)
+        try
         {
-            if (reader.EndOfStream)
-                break;
 
-            string line = reader.ReadLine();
-            //Debug.Log(line);
-            string[] splitByComma = line.Split('\t');
-
-            // Check char id
-            if (splitByComma[0] != "")
+            while (true)
             {
-                currCharID = splitByComma[0];
-                if (!idToModelSO.ContainsKey(currCharID))
-                    idToModelSO.Add(currCharID,
-                                    ScriptableObject.CreateInstance<DialogueModelSO>());
-                currSO = idToModelSO[currCharID];
-                currSO.DialogueModels = new DialogueModel[0];
-            }
+                if (reader.EndOfStream)
+                    break;
 
+                string line = reader.ReadLine();
+                //Debug.Log(line);
+                string[] splitByComma = line.Split('\t');
 
-            string completionFlag = splitByComma[1];
-            string modelPreReqFlag = splitByComma[2];
-            string modelPreReqUnmetFlag = splitByComma[3];
-            string name = splitByComma[4];
-
-            if (OneOfThemIsntEmpty(completionFlag, modelPreReqFlag, modelPreReqUnmetFlag, name))
-            {
-                // Expand DialogueModels by 1
-                DialogueModel[] temp = new DialogueModel[currSO.DialogueModels.Length];
-                currSO.DialogueModels.CopyTo(temp, 0);
-
-                currSO.DialogueModels = new DialogueModel[currSO.DialogueModels.Length + 1];
-                temp.CopyTo(currSO.DialogueModels, 0);
-
-                // Create new
-                currDialogueModelIndex = currSO.DialogueModels.Length - 1;
-                currSO.DialogueModels[currDialogueModelIndex] = new DialogueModel();
-                currDialogueModel = currSO.DialogueModels[currDialogueModelIndex];
-                currDialogueModel.Dialogue = new Dialogue[0];
-
-                // Convert fields
-                currDialogueModel.FlagsToMarkComplete = FlagsFromString(completionFlag);
-                currDialogueModel.PrereqFlags = FlagsFromString(modelPreReqFlag);
-                currDialogueModel.PrereqUnmetFlags = FlagsFromString(modelPreReqUnmetFlag);
-                currDialogueModel.Name = name;
-
-                // Audio
+                // Check char id
+                if (splitByComma[0] != "")
                 {
-                    string str = splitByComma[23];
-                    float outFloat;
-                    if (str != "" && float.TryParse(str, out outFloat))
+                    currCharID = splitByComma[0];
+                    if (!idToModelSO.ContainsKey(currCharID))
+                        idToModelSO.Add(currCharID,
+                                        ScriptableObject.CreateInstance<DialogueModelSO>());
+                    currSO = idToModelSO[currCharID];
+                    currSO.DialogueModels = new DialogueModel[0];
+                }
+
+
+                string completionFlag = splitByComma[1];
+                string modelPreReqFlag = splitByComma[2];
+                string modelPreReqUnmetFlag = splitByComma[3];
+                string name = splitByComma[4];
+
+                if (OneOfThemIsntEmpty(completionFlag, modelPreReqFlag, modelPreReqUnmetFlag, name))
+                {
+                    // Expand DialogueModels by 1
+                    DialogueModel[] temp = new DialogueModel[currSO.DialogueModels.Length];
+                    currSO.DialogueModels.CopyTo(temp, 0);
+
+                    currSO.DialogueModels = new DialogueModel[currSO.DialogueModels.Length + 1];
+                    temp.CopyTo(currSO.DialogueModels, 0);
+
+                    // Create new
+                    currDialogueModelIndex = currSO.DialogueModels.Length - 1;
+                    currSO.DialogueModels[currDialogueModelIndex] = new DialogueModel();
+                    currDialogueModel = currSO.DialogueModels[currDialogueModelIndex];
+                    currDialogueModel.Dialogue = new Dialogue[0];
+
+                    // Convert fields
+                    currDialogueModel.FlagsToMarkComplete = FlagsFromString(completionFlag);
+                    currDialogueModel.PrereqFlags = FlagsFromString(modelPreReqFlag);
+                    currDialogueModel.PrereqUnmetFlags = FlagsFromString(modelPreReqUnmetFlag);
+                    currDialogueModel.Name = name;
+
+                    // Audio
                     {
-                        currDialogueModel.Speed = outFloat;
+                        string str = splitByComma[23];
+                        float outFloat;
+                        if (str != "" && float.TryParse(str, out outFloat))
+                        {
+                            currDialogueModel.Speed = outFloat;
+                        }
                     }
-                }
-                {
-                    string str = splitByComma[24];
-                    float outFloat;
-                    if (str != "" && float.TryParse(str, out outFloat))
                     {
-                        currDialogueModel.Pitch = outFloat;
+                        string str = splitByComma[24];
+                        float outFloat;
+                        if (str != "" && float.TryParse(str, out outFloat))
+                        {
+                            currDialogueModel.Pitch = outFloat;
+                        }
                     }
-                }
-                {
-                    string str = splitByComma[25];
-                    float outFloat;
-                    if (str != "" && float.TryParse(str, out outFloat))
                     {
-                        currDialogueModel.PitchVariance = outFloat;
+                        string str = splitByComma[25];
+                        float outFloat;
+                        if (str != "" && float.TryParse(str, out outFloat))
+                        {
+                            currDialogueModel.PitchVariance = outFloat;
+                        }
                     }
-                }
-                {
-                    string str = splitByComma[26];
-                    float outFloat;
-                    if (str != "" && float.TryParse(str, out outFloat))
                     {
-                        currDialogueModel.Volume = outFloat;
+                        string str = splitByComma[26];
+                        float outFloat;
+                        if (str != "" && float.TryParse(str, out outFloat))
+                        {
+                            currDialogueModel.Volume = outFloat;
+                        }
                     }
-                }
-                {
-                    string str = splitByComma[27];
-                    float outFloat;
-                    if (str != "" && float.TryParse(str, out outFloat))
                     {
-                        currDialogueModel.VolumeVariance = outFloat;
+                        string str = splitByComma[27];
+                        float outFloat;
+                        if (str != "" && float.TryParse(str, out outFloat))
+                        {
+                            currDialogueModel.VolumeVariance = outFloat;
+                        }
                     }
+
+                    // Audio Clip
+                    string audioStr = splitByComma[28];
+                    if (audioStr == "")
+                    {
+                        audioStr = "DialogueTick";
+                    }
+
+                    currDialogueModel.TickAudioClip =
+                        (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Audio/" + audioStr, typeof(AudioClip));
+
                 }
 
-                // Audio Clip
-                string audioStr = splitByComma[28];
-                if (audioStr == "")
+                string dialogueText = splitByComma[5];
+                if (dialogueText == "")
                 {
-                    audioStr = "DialogueTick";
+                    Debug.LogWarning("DIALOGUE TEXT SHOULD NEVER BY EMPTY, OFF BY ONE ERROR?");
+                }
+                else
+                {
+                    Dialogue[] temp = new Dialogue[currDialogueModel.Dialogue.Length];
+                    currDialogueModel.Dialogue.CopyTo(temp, 0);
+
+                    currDialogueModel.Dialogue = new Dialogue[currDialogueModel.Dialogue.Length + 1];
+                    temp.CopyTo(currDialogueModel.Dialogue, 0);
+
+                    // Create new
+                    currDialogueIndex = currDialogueModel.Dialogue.Length - 1;
+                    currDialogueModel.Dialogue[currDialogueIndex] = new Dialogue();
+                    currDialogue = currDialogueModel.Dialogue[currDialogueIndex];
+                    currDialogue.Text = dialogueText;
                 }
 
-                currDialogueModel.TickAudioClip =
-                    (AudioClip)AssetDatabase.LoadAssetAtPath("Assets/Audio/" + audioStr, typeof(AudioClip));
+                currDialogue.PrereqFlag = FlagsFromString(splitByComma[6]);
+                currDialogue.PrereqUnmetFlags = FlagsFromString(splitByComma[7]);
 
-            }
-
-            string dialogueText = splitByComma[5];
-            if (dialogueText == "")
-            {
-                Debug.LogWarning("DIALOGUE TEXT SHOULD NEVER BY EMPTY, OFF BY ONE ERROR?");
-            }
-            else
-            {
-                Dialogue[] temp = new Dialogue[currDialogueModel.Dialogue.Length];
-                currDialogueModel.Dialogue.CopyTo(temp, 0);
-
-                currDialogueModel.Dialogue = new Dialogue[currDialogueModel.Dialogue.Length + 1];
-                temp.CopyTo(currDialogueModel.Dialogue, 0);
-
-                // Create new
-                currDialogueIndex = currDialogueModel.Dialogue.Length - 1;
-                currDialogueModel.Dialogue[currDialogueIndex] = new Dialogue();
-                currDialogue = currDialogueModel.Dialogue[currDialogueIndex];
-                currDialogue.Text = dialogueText;
-            }
-
-            currDialogue.PrereqFlag = FlagsFromString(splitByComma[6]);
-            currDialogue.PrereqUnmetFlags = FlagsFromString(splitByComma[7]);
-
-            string[] optionText =
-            {
+                string[] optionText =
+                {
                     splitByComma[8],
                     splitByComma[11],
                     splitByComma[14],
                     splitByComma[17],
                     splitByComma[20],
                 };
-            string[] preReqForOpt =
-{
+                string[] preReqForOpt =
+    {
                     splitByComma[9],
                     splitByComma[12],
                     splitByComma[15],
                     splitByComma[18],
                     splitByComma[21],
                 };
-            string[] flagToFlipForOpt =
-{
+                string[] flagToFlipForOpt =
+    {
                     splitByComma[10],
                     splitByComma[13],
                     splitByComma[16],
@@ -177,18 +180,22 @@ public class CsvToDialogueModelSO : MonoBehaviour
                     splitByComma[22],
                 };
 
-            int optionsSize = CountNotEmpty(optionText);
-            currDialogue.Options = new DialogueOption[optionsSize];
-            for (int i = 0; i < optionsSize; i++)
-            {
-                currDialogue.Options[i] = new DialogueOption();
-                DialogueOption opt = currDialogue.Options[i];
-                opt.DialogueText = optionText[i];
-                opt.RequiredFlagsForDialogue = FlagsFromString(preReqForOpt[i]);
-                opt.FlagsToMarkAsComplete = FlagsFromString(flagToFlipForOpt[i]);
+                int optionsSize = CountNotEmpty(optionText);
+                currDialogue.Options = new DialogueOption[optionsSize];
+                for (int i = 0; i < optionsSize; i++)
+                {
+                    currDialogue.Options[i] = new DialogueOption();
+                    DialogueOption opt = currDialogue.Options[i];
+                    opt.DialogueText = optionText[i];
+                    opt.RequiredFlagsForDialogue = FlagsFromString(preReqForOpt[i]);
+                    opt.FlagsToMarkAsComplete = FlagsFromString(flagToFlipForOpt[i]);
+                }
             }
         }
-        reader.Close();
+        finally
+        {
+            reader.Close();
+        }
 
         foreach (string id in idToModelSO.Keys)
         {

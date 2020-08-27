@@ -31,7 +31,7 @@ public class CameraZoomController : MonoBehaviour
     Vector3 targetPos = -Vector3.forward;
     float posLerpFactor = 0.2f;
 
-    float targetSize = 1.0f;
+    float targetSize = 4.5f;
     float sizeLerpFactor = 0.2f;
 
     // Start is called before the first frame update

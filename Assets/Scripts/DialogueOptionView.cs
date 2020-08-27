@@ -38,6 +38,7 @@ public class DialogueOptionView : MonoBehaviour
     private AudioSource audioSource_;
 
     FlagManager flagManager_;
+    VolumeManager volumeManager_;
     DialogueOption[] dialogueOptions_;
 
     public DialogueOption[] DialogueOptions
@@ -104,6 +105,11 @@ public class DialogueOptionView : MonoBehaviour
 
     int availableOptions_ = 0;
     private int selectedIndex = -1;
+    private bool disableKeybasedSelection = false;
+    public void DisableKeybasedSelection()
+    {
+        disableKeybasedSelection = true;
+    }
 
     public void MoveSelectorDown()
     {
@@ -141,6 +147,8 @@ public class DialogueOptionView : MonoBehaviour
 
     public void ConfirmSelection()
     {
+        if (disableKeybasedSelection) return;
+
         if (selectedIndex < 0 || selectedIndex >= availableOptions_)
         {
             // Go to first option as selection.
@@ -161,6 +169,7 @@ public class DialogueOptionView : MonoBehaviour
     void Start()
     {
         flagManager_ = FlagManager.Instance;
+        volumeManager_ = VolumeManager.Instance;
         for (int i = 0; i < optionButtonImages_.Length; i++)
         {
             optionButtonImages_[i].color = defaultButtonColor_;
@@ -180,7 +189,7 @@ public class DialogueOptionView : MonoBehaviour
 
     private void PlayAudioOneShot(AudioClip clip, float pitchChange = 0)
     {
-        audioSource_.volume = VOLUME
+        audioSource_.volume = volumeManager_.SoundEffectVolume
             + UnityEngine.Random.Range(-VOLUME_VARIANCE, VOLUME_VARIANCE);
         audioSource_.pitch = PITCH + pitchChange
             + UnityEngine.Random.Range(-PITCH_VARIANCE, PITCH_VARIANCE);

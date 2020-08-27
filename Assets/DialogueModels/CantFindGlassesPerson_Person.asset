@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591f0dc70b7636c4ba02b9878be40000, type: 3}
+  m_Name: CantFindGlassesPerson_Person
+  m_EditorClassIdentifier: 
+  DialogueModels:
+  - PrereqFlags: 38000000
+    PrereqUnmetFlags: 37000000
+    Name: Person without glasses
+    Dialogue:
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Hey uh... it's a... um...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I'm in a bit of pickle.. haha ...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Well, good thing I like pickles
+        FlagsToMarkAsComplete: 300000001500000055000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: So how can I help?
+        FlagsToMarkAsComplete: 310000001900000055000000
+    - PrereqFlag: 30000000
+      PrereqUnmetFlags: 
+      Text: Haha, yeah I guess pickles are pretty radical...
+      Options: []
+    - PrereqFlag: 31000000
+      PrereqUnmetFlags: 
+      Text: Oh radical, um yeah...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: (gosh who even says radical irl?)
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Well uh, I'm actually here because...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Because...?
+        FlagsToMarkAsComplete: 19000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I... uh... yeah! I can't find my glasses!
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Uh... I've looked everywhere for it!
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Uh......
+        FlagsToMarkAsComplete: 32000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Sorry, I ate your glasses
+        FlagsToMarkAsComplete: 3300000017000000
+    - PrereqFlag: 32000000
+      PrereqUnmetFlags: 
+      Text: Yeah, you're right that was a stupid request.
+      Options: []
+    - PrereqFlag: 33000000
+      PrereqUnmetFlags: 
+      Text: What? Oh no that's not good...
+      Options: []
+    - PrereqFlag: 33000000
+      PrereqUnmetFlags: 
+      Text: (I can't even begin to imagine what your stomach is going through)
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: er... I guess I don't need my glasses...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Okay....
+        FlagsToMarkAsComplete: 16000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Radical
+        FlagsToMarkAsComplete: 18000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ... because...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: uhh... you... ummm.... y-y-you cured my eyesight!
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: I no longer have any problems!
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Aha...
+        FlagsToMarkAsComplete: 
+      - RequiredFlagsForDialogue: 
+        DialogueText: You're welcome
+        FlagsToMarkAsComplete: 
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: None whatsoever!
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Um....
+        FlagsToMarkAsComplete: 190000001c000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: It was because of my magic spell
+        FlagsToMarkAsComplete: 3e00000017000000
+    - PrereqFlag: 3e000000
+      PrereqUnmetFlags: 
+      Text: ....
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: ...
+        FlagsToMarkAsComplete: 1c000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Oh is that a seed?
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: I was told it represents your problems
+        FlagsToMarkAsComplete: 
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Oh... uh.... you really don't have to worry about me...
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: It's no big deal for me
+        FlagsToMarkAsComplete: 190000003f0000001d000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: Good thing I'm hungry
+        FlagsToMarkAsComplete: 1700000040000000
+    - PrereqFlag: 3f000000
+      PrereqUnmetFlags: 
+      Text: If you say so...
+      Options: []
+    - PrereqFlag: 4000000033000000
+      PrereqUnmetFlags: 
+      Text: (oh no not this again)
+      Options: []
+    - PrereqFlag: 40000000
+      PrereqUnmetFlags: 
+      Text: I... uh.... I'm not sure... if that's good for you
+      Options: []
+    - PrereqFlag: 40000000
+      PrereqUnmetFlags: 
+      Text: .... I guess it's your choice anyways...
+      Options: []
+    - PrereqFlag: 40000000
+      PrereqUnmetFlags: 
+      Text: (at least you don't have to spend your time on someone like me)
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: '*Don''t eat it*'
+        FlagsToMarkAsComplete: 1d000000
+      - RequiredFlagsForDialogue: 33000000
+        DialogueText: '*Eat it*'
+        FlagsToMarkAsComplete: 42000000170000001d000000
+    - PrereqFlag: 42000000
+      PrereqUnmetFlags: 
+      Text: Oh gosh... You actually ate it.... Radical....
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ...
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ..............
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: ....................
+      Options: []
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: uh......................
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: Bye
+        FlagsToMarkAsComplete: 1b000000
+      - RequiredFlagsForDialogue: 
+        DialogueText: This is awkward
+        FlagsToMarkAsComplete: 410000005b000000
+    - PrereqFlag: 41000000
+      PrereqUnmetFlags: 
+      Text: (oh no)
+      Options: []
+    - PrereqFlag: 41000000
+      PrereqUnmetFlags: 
+      Text: (I've made it worse)
+      Options: []
+    - PrereqFlag: 41000000
+      PrereqUnmetFlags: 
+      Text: (I'm just going to run away now)
+      Options:
+      - RequiredFlagsForDialogue: 
+        DialogueText: What's that?
+        FlagsToMarkAsComplete: 1b0000005b000000
+    - PrereqFlag: 
+      PrereqUnmetFlags: 
+      Text: Bye!
+      Options: []
+    Speed: 18
+    Pitch: 1
+    PitchVariance: 0.1
+    Volume: 0.9
+    VolumeVariance: 0.1
+    TickAudioClip: {fileID: 8300000, guid: 7afae18f2b41f7e439c3fb08f7fc1973, type: 3}
+    FlagsToMarkComplete: 37000000

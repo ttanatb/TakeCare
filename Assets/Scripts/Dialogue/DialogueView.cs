@@ -29,7 +29,7 @@ public class DialogueView : MonoBehaviour
     float lowerVoiceVolumeFactor_ = 0.3f;
 
     [SerializeField]
-    float shoutVoiceVolumeIncrement_ = 0.15f;
+    float shoutVoiceVolumeFactor_ = 1.15f;
 
     bool isCurrentlyLoweringVoice = false;
 
@@ -70,8 +70,11 @@ public class DialogueView : MonoBehaviour
             state_ = State.Initial;
             dialogueIndex_ = 0;
             ClearText();
-            scrollIntervalSec_ = 1.0f / value.Speed;
-            nameText_.text = value.Name;
+            if (value != null)
+            {
+                scrollIntervalSec_ = 1.0f / value.Speed;
+                nameText_.text = value.Name;
+            }
         }
     }
 
@@ -82,6 +85,10 @@ public class DialogueView : MonoBehaviour
     }
 
     FlagManager flagManager_;
+    VolumeManager volumeManager_;
+
+    [SerializeField]
+    bool isWeb = true;
 
     private void Awake()
     {
@@ -105,6 +112,7 @@ public class DialogueView : MonoBehaviour
     void Start()
     {
         flagManager_ = FlagManager.Instance;
+        volumeManager_ = VolumeManager.Instance;
         dialogueOptionView_.OptionSelectedCb = () =>
         {
             if (state_ != State.WaitingForOptionSelection)
@@ -116,12 +124,15 @@ public class DialogueView : MonoBehaviour
             GoToNext();
             return true;
         };
+
+        isWeb = Application.platform != RuntimePlatform.WebGLPlayer;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonUp("Talk"))
+        if (isWeb ? IsTalkInputUpWeb() : IsTalkInputUpPC())
         {
             ignoreNextInput_ = false;
         }
@@ -135,12 +146,21 @@ public class DialogueView : MonoBehaviour
         }
     }
 
+    private bool IsTalkInputUpWeb()
+    {
+        return Input.GetMouseButtonUp(0);
+    }
+
+    private bool IsTalkInputUpPC()
+    {
+        return Input.GetButtonUp("Talk");
+    }
 
     // Starts the text scrolling.
     public bool StartDialogueScroll()
     {
         // Proceed until we find a dialogue we can hit.
-        while (true) 
+        while (true)
         {
             if (dialogueIndex_ >= model_.Dialogue.Length)
                 return false;
@@ -267,17 +287,18 @@ public class DialogueView : MonoBehaviour
                     char.IsUpper(currChar) && char.IsUpper(text[subStringLength_ - 2]);
             }
 
-            tickAudioSource_.volume = model_.Volume
+            float volume = volumeManager_.SoundEffectVolume * model_.Volume
                 + UnityEngine.Random.Range(-model_.VolumeVariance, model_.VolumeVariance);
             if (isCurrentlyLoweringVoice)
             {
-                tickAudioSource_.volume *= lowerVoiceVolumeFactor_;
+                volume *= lowerVoiceVolumeFactor_;
             }
             if (isShouting)
             {
-                tickAudioSource_.volume += shoutVoiceVolumeIncrement_;
+                volume *= shoutVoiceVolumeFactor_;
             }
 
+            tickAudioSource_.volume = volume;
             tickAudioSource_.pitch = model_.Pitch
                 + UnityEngine.Random.Range(-model_.PitchVariance, model_.PitchVariance);
 

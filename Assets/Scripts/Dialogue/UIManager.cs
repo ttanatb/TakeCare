@@ -19,11 +19,37 @@ public class UIManager : Singleton<UIManager>
     PlayerTalkCoordinator playerTalkCorodinator_ = null;
     public PlayerTalkCoordinator Player { set { playerTalkCorodinator_ = value; } }
 
+    [SerializeField]
+    GameObject mainMenu_;
+
+    [SerializeField]
+    bool isWeb = true;
+
+    public bool DisableDialogueInput { set; get; }
+
+    public void ShowMenuScreen(bool v)
+    {
+        mainMenu_.SetActive(v);
+    }
+
+    public void ClearGameState()
+    {
+        FlagManager.Instance.ClearAllFlags();
+        dialogueView_.SetRenderersEnabled(false);
+        dialogueView_.Model = null;
+        dialogueOptionView_.DialogueOptions = new DialogueOption[0];
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         flagManager_ = FlagManager.Instance;
         dialogueView_.SetRenderersEnabled(false);
+
+        isWeb = Application.platform != RuntimePlatform.WebGLPlayer;
+
+        if (isWeb)
+            dialogueOptionView_.DisableKeybasedSelection();
     }
 
     // Update is called once per frame
@@ -35,11 +61,10 @@ public class UIManager : Singleton<UIManager>
 
     private void CheckInputForMovingSelector()
     {
-        if (!Input.GetButtonDown("Vertical"))
+        if (isWeb || !Input.GetButtonDown("Vertical"))
         {
             return;
         }
-
 
         float verticalAxisInput = Input.GetAxis("Vertical");
         if (verticalAxisInput != 0.0f)
@@ -66,7 +91,7 @@ public class UIManager : Singleton<UIManager>
 
     private void CheckInputForConfirm()
     {
-        if (Input.GetButtonDown("Talk"))
+        if (!DisableDialogueInput && (isWeb ? IsTalkInputDownWeb() : IsTalkInputDownPC()))
         {
             switch (dialogueView_.CurrentState)
             {
@@ -88,6 +113,17 @@ public class UIManager : Singleton<UIManager>
         }
 
     }
+
+    private bool IsTalkInputDownWeb()
+    {
+        return Input.GetMouseButtonDown(0);
+    }
+
+    private bool IsTalkInputDownPC()
+    {
+        return Input.GetButtonDown("Talk");
+    }
+
 
     public bool SetAndShowDialogue(DialogueModel dialogueModel, Func<bool> dialogueCompletedCb)
     {

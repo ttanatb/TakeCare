@@ -97,11 +97,24 @@ public class TalkableNPC : MonoBehaviour
         {
             interactbleText_ = GetComponentInChildren<TextMeshPro>();
         }
-        SetInteractable(false);
+        CheckIfInteractible(0);
+
+        flagManager_.AddListener(CheckIfInteractible);
+    }
+
+    public void CheckIfInteractible(FlagManager.EventFlag flag)
+    {
+        SetHasDialogue(HasAvailableModel());
+    }
+
+
+    private void SetHasDialogue(bool isInteractable)
+    {
+        interactbleText_.gameObject.SetActive(isInteractable);
     }
 
     public void SetInteractable(bool isInteractable)
     {
-        interactbleText_.gameObject.SetActive(isInteractable);
+        interactbleText_.text = isInteractable ? "!" : "?";
     }
 }

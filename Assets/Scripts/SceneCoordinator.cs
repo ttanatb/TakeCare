@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneCoordinator : MonoBehaviour
 {
-    int[] sceneIdsToLoad = { 1, 2 };
+
+    static int startCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Only specifying the sceneName or sceneBuildIndex will load the Scene with the Single mode
-        foreach (int id in sceneIdsToLoad)
-        {
-            SceneManager.LoadScene(id, LoadSceneMode.Additive);
-        }
+        startCount++;
+        if (startCount == 1)
+            SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-
+        UIManager.Instance.ShowMenuScreen(false);
+        SceneManager.UnloadSceneAsync(0);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 }
