@@ -4,8 +4,9 @@ _an empathy game about taking care of other(s)_
 ![Gif of person walking up to hellhound](https://img.itch.zone/aW1nLzQxMjA2MDAuZ2lm/315x250%23c/VhPXKx.gif)
 
 ## Screenshots
-![Screenshot 1](https://img.itch.zone/aW1hZ2UvNzM5MjU4LzQxMTg5MzcucG5n/original/Y7ppGy.png)
-![Screenshot 2](https://img.itch.zone/aW1hZ2UvNzM5MjU4LzQxMTg5MzgucG5n/original/tIFN3z.png)
+![Screenshot 1](https://img.itch.zone/aW1hZ2UvNzM5MjU4LzQxNjU2MzguZ2lm/347x500/lPJGga.gif)
+![Screenshot 2](https://img.itch.zone/aW1hZ2UvNzM5MjU4LzQxNjU2MzcuZ2lm/347x500/3Pac1R.gif)
+![Screenshot 3](https://img.itch.zone/aW1hZ2UvNzM5MjU4LzQxNjU2NTIuZ2lm/347x500/ayVMBl.gif)
 
 ## Executable
 Check it out on:
